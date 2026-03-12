@@ -1,0 +1,176 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = 'Tomasz Rybicki — Konsultant Technologiczny & Architekt',
+  description = 'Pomagam firmom upraszczać złożone systemy, porządkować architekturę i redukować dług technologiczny. Senior consultant i architect z 14-letnim doświadczeniem.',
+  canonical,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-bg text-ink font-sans antialiased">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: rgba(232, 81, 30, 0.15);
+    color: #0f172a;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f5f7fa;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(203, 213, 225, 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(203, 213, 225, 0.6) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #e2e8f0;
+    background: #f5f7fa;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #e8511e;
+    border-radius: 50%;
+  }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+
+  .card:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .prose-content h1,
+  .prose-content h2,
+  .prose-content h3 {
+    color: #0f172a;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-content h1 { font-size: 2rem; }
+  .prose-content h2 { font-size: 1.5rem; }
+  .prose-content h3 { font-size: 1.2rem; }
+
+  .prose-content p {
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .prose-content ul,
+  .prose-content ol {
+    color: #475569;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose-content li {
+    margin-bottom: 0.4rem;
+    line-height: 1.7;
+  }
+
+  .prose-content strong {
+    color: #0f172a;
+    font-weight: 600;
+  }
+
+  .prose-content a {
+    color: #e8511e;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-content blockquote {
+    border-left: 3px solid #e8511e;
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    color: #64748b;
+    font-style: italic;
+  }
+
+  .prose-content code {
+    font-family: 'JetBrains Mono', monospace;
+    background: #f5f7fa;
+    border: 1px solid #e2e8f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.875em;
+    color: #e8511e;
+  }
+</style>

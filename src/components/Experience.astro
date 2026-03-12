@@ -1,0 +1,94 @@
+---
+const areas = [
+  {
+    category: 'Architecture & Technical Strategy',
+    items: [
+      'System design i analiza architektury',
+      'Technical roadmapping',
+      'Modularyzacja i separacja odpowiedzialności',
+      'Domain-Driven Design (DDD)',
+      'Architecture Decision Records (ADR)',
+    ],
+  },
+  {
+    category: 'Frontend Platforms & Web Architecture',
+    items: [
+      'Frontend platform design',
+      'Micro-frontends i Web Components',
+      'React, TypeScript, modern JS ecosystem',
+      'Design System & shared component libraries',
+      'Module Federation, Webpack, Vite',
+    ],
+  },
+  {
+    category: '.NET / APIs / Integrations',
+    items: [
+      'C# / .NET 6/8',
+      'REST, GraphQL, gRPC',
+      'API design i API contracts',
+      'Backend for Frontend (BFF)',
+      'Legacy modernization',
+    ],
+  },
+  {
+    category: 'Cloud & Distributed Systems',
+    items: [
+      'Azure (App Services, Service Bus, Functions)',
+      'Architektura event-driven',
+      'Message queues i async communication',
+      'Resiliency patterns',
+      'Observability i monitoring',
+    ],
+  },
+  {
+    category: 'Developer Experience / Build & CI-CD',
+    items: [
+      'Build tooling i bundling strategy',
+      'Monorepo (Nx, Turborepo)',
+      'CI/CD pipelines (GitHub Actions, Azure DevOps)',
+      'Shared tooling i standardyzacja',
+      'Code quality gates i linting',
+    ],
+  },
+  {
+    category: 'Technical Leadership / Consulting',
+    items: [
+      'Technical advisory dla CTO i Engineering Managerów',
+      'Architecture review i code review',
+      'Mentoring liderów technicznych',
+      'Ocena i redukcja długu technologicznego',
+      'Wsparcie decyzyjne przy kluczowych wyborach',
+    ],
+  },
+];
+---
+
+<section id="doswiadczenie" class="py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14">
+      <div class="section-label">Obszary doświadczenia</div>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
+        Szerokość i głębokość kompetencji
+      </h2>
+      <p class="text-ink-muted text-lg max-w-xl leading-relaxed">
+        Nie lista technologii — obszary, w których mam realne, zbudowane latami doświadczenie.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {areas.map(area => (
+        <div class="card">
+          <h3 class="text-ink font-semibold text-sm mb-4 leading-snug">{area.category}</h3>
+          <ul class="space-y-2">
+            {area.items.map(item => (
+              <li class="flex items-start gap-2.5 text-ink-muted text-sm leading-relaxed">
+                <span class="mt-2 flex-shrink-0 w-1 h-1 rounded-full bg-accent/60"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+const articles = allArticles
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 3);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<section id="artykuly" class="py-24 md:py-32 bg-bg-surface relative overflow-hidden">
+  <div class="absolute inset-0 grid-bg opacity-20"></div>
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+      <div>
+        <div class="section-label">Artykuły</div>
+        <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
+          Praktyczne spojrzenie na technologię
+        </h2>
+        <p class="text-ink-muted text-lg max-w-xl leading-relaxed">
+          Piszę o architekturze, długu technicznym, platformach frontendowych i podejmowaniu
+          sensownych decyzji technicznych. Bez teorii dla teorii.
+        </p>
+      </div>
+      <a
+        href="/artykuly"
+        class="flex-shrink-0 inline-flex items-center gap-2 border border-border hover:border-border-light text-ink-muted hover:text-ink text-sm font-medium px-5 py-2.5 rounded-lg transition-all"
+      >
+        Wszystkie artykuły
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    {articles.length > 0 ? (
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {articles.map(article => (
+          <a href={`/artykuly/${article.slug}`} class="card group flex flex-col">
+            <div class="flex flex-wrap gap-2 mb-3">
+              {article.data.tags?.slice(0, 2).map(tag => (
+                <span class="text-xs font-mono text-ink-muted border border-border px-2 py-0.5 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h3 class="text-ink font-semibold text-base mb-2 leading-snug group-hover:text-accent transition-colors flex-1">
+              {article.data.title}
+            </h3>
+            <p class="text-ink-muted text-sm leading-relaxed mb-4">{article.data.description}</p>
+            <time class="text-ink-subtle text-xs font-mono" datetime={article.data.publishDate.toISOString()}>
+              {formatDate(article.data.publishDate)}
+            </time>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <!-- Placeholder articles -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          {
+            tags: ['Architektura', 'Pragmatyzm'],
+            title: 'Kiedy architektura pomaga, a kiedy przeszkadza',
+            desc: 'Architektura ma sens tylko wtedy, gdy rozwiązuje realny problem. Jak rozpoznać granicę między sensownym projektowaniem a overengineeringiem?',
+          },
+          {
+            tags: ['Tech Debt'],
+            title: 'Jak rozpoznawać realny dług technologiczny',
+            desc: 'Nie każdy brzydki kod to dług technologiczny. Nie każdy dług wymaga natychmiastowej spłaty. Jak odróżnić dług, który boli, od tego, który tylko źle wygląda?',
+          },
+          {
+            tags: ['Frontend', 'Microfrontends'],
+            title: 'Micro-frontends: kiedy mają sens, a kiedy to overengineering',
+            desc: 'Micro-frontends rozwiązują realne problemy w dużych organizacjach. Ale dla większości projektów są zbędną komplikacją. Jak podjąć tę decyzję?',
+          },
+        ].map(article => (
+          <div class="card flex flex-col opacity-70">
+            <div class="flex flex-wrap gap-2 mb-3">
+              {article.tags.map(tag => (
+                <span class="text-xs font-mono text-ink-muted border border-border px-2 py-0.5 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h3 class="text-ink font-semibold text-base mb-2 leading-snug flex-1">{article.title}</h3>
+            <p class="text-ink-muted text-sm leading-relaxed mb-4">{article.desc}</p>
+            <span class="text-ink-subtle text-xs font-mono">Wkrótce</span>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
