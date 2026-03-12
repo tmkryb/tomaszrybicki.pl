@@ -1,32 +1,33 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         bg: {
-          DEFAULT: '#ffffff',
-          surface: '#f5f7fa',
-          card: '#ffffff',
-          elevated: '#edf1f7',
+          DEFAULT: 'rgb(var(--color-bg) / <alpha-value>)',
+          surface: 'rgb(var(--color-bg-surface) / <alpha-value>)',
+          card: 'rgb(var(--color-bg-card) / <alpha-value>)',
+          elevated: 'rgb(var(--color-bg-elevated) / <alpha-value>)',
         },
         border: {
-          DEFAULT: '#e2e8f0',
-          light: '#cbd5e1',
+          DEFAULT: 'rgb(var(--color-border) / <alpha-value>)',
+          light: 'rgb(var(--color-border-light) / <alpha-value>)',
         },
         accent: {
-          DEFAULT: '#e8511e',
-          light: '#ff6b39',
-          dark: '#c9430f',
+          DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
+          light: 'rgb(var(--color-accent-light) / <alpha-value>)',
+          dark: 'rgb(var(--color-accent-dark) / <alpha-value>)',
         },
         ink: {
-          DEFAULT: '#0f172a',
-          muted: '#475569',
-          subtle: '#94a3b8',
+          DEFAULT: 'rgb(var(--color-ink) / <alpha-value>)',
+          muted: 'rgb(var(--color-ink-muted) / <alpha-value>)',
+          subtle: 'rgb(var(--color-ink-subtle) / <alpha-value>)',
         },
         nav: {
-          DEFAULT: '#1a2236',
-          border: '#242e45',
+          DEFAULT: 'rgb(var(--color-nav) / <alpha-value>)',
+          border: 'rgb(var(--color-nav-border) / <alpha-value>)',
         },
       },
       fontFamily: {

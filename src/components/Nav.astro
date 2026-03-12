@@ -9,7 +9,7 @@ const navLinks = [
 ];
 ---
 
-<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: #1a2236;">
+<nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-nav border-b border-nav-border">
   <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
     <a href="/" class="text-white font-semibold text-lg tracking-tight">
       Tomasz Rybicki<span class="text-accent">.</span>
@@ -26,32 +26,83 @@ const navLinks = [
       ))}
     </div>
 
-    <a
-      href="/#kontakt"
-      class="hidden md:inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-200"
-    >
-      Umów rozmowę
-    </a>
+    <div class="hidden md:flex items-center gap-3">
+      <div class="flex items-center bg-white/10 rounded-lg p-1 gap-0.5">
+        <button data-theme="light" class="theme-btn p-1.5 rounded transition-colors text-white/50 hover:text-white/90" title="Jasny motyw">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+        <button data-theme="auto" class="theme-btn p-1.5 rounded transition-colors text-white/50 hover:text-white/90" title="Motyw systemowy">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </button>
+        <button data-theme="dark" class="theme-btn p-1.5 rounded transition-colors text-white/50 hover:text-white/90" title="Ciemny motyw">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
 
-    <button id="menu-toggle" class="md:hidden text-white/60 p-1" aria-label="Menu">
-      <svg id="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="6" x2="21" y2="6" />
-        <line x1="3" y1="12" x2="21" y2="12" />
-        <line x1="3" y1="18" x2="21" y2="18" />
-      </svg>
-      <svg id="icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="18" y1="6" x2="6" y2="18" />
-        <line x1="6" y1="6" x2="18" y2="18" />
-      </svg>
-    </button>
+      <a
+        href="/#kontakt"
+        class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-200"
+      >
+        Umów rozmowę
+      </a>
+    </div>
+
+    <div class="md:hidden flex items-center gap-2">
+      <div class="flex items-center bg-white/10 rounded-lg p-1 gap-0.5">
+        <button data-theme="light" class="theme-btn p-1.5 rounded transition-colors text-white/50 hover:text-white/90">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+        <button data-theme="auto" class="theme-btn p-1.5 rounded transition-colors text-white/50 hover:text-white/90">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </button>
+        <button data-theme="dark" class="theme-btn p-1.5 rounded transition-colors text-white/50 hover:text-white/90">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+
+      <button id="menu-toggle" class="text-white/60 p-1" aria-label="Menu">
+        <svg id="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+        <svg id="icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden border-t px-6 py-4 shadow-xl" style="background: #1a2236; border-color: #242e45;">
+  <div id="mobile-menu" class="hidden md:hidden border-t border-nav-border bg-nav px-6 py-4 shadow-xl">
     {navLinks.map(link => (
       <a
         href={link.href}
-        class="block py-3 text-white/60 hover:text-white text-sm border-b last:border-0 transition-colors"
-        style="border-color: #242e45;"
+        class="block py-3 text-white/60 hover:text-white text-sm border-b border-nav-border last:border-0 transition-colors"
       >
         {link.label}
       </a>
@@ -66,6 +117,7 @@ const navLinks = [
 </nav>
 
 <script>
+  // Mobile menu
   const toggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('icon-open');
@@ -84,5 +136,46 @@ const navLinks = [
       iconOpen?.classList.remove('hidden');
       iconClose?.classList.add('hidden');
     });
+  });
+
+  // Theme toggle
+  const STORAGE_KEY = 'theme';
+
+  function getStoredTheme(): string {
+    return localStorage.getItem(STORAGE_KEY) || 'auto';
+  }
+
+  function applyTheme(theme: string) {
+    const isDark =
+      theme === 'dark' ||
+      (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.classList.toggle('dark', isDark);
+  }
+
+  function updateButtons(theme: string) {
+    document.querySelectorAll<HTMLElement>('.theme-btn').forEach(btn => {
+      const active = btn.dataset.theme === theme;
+      btn.classList.toggle('bg-white/20', active);
+      btn.classList.toggle('text-white', active);
+      btn.classList.toggle('text-white/50', !active);
+    });
+  }
+
+  function setTheme(theme: string) {
+    localStorage.setItem(STORAGE_KEY, theme);
+    applyTheme(theme);
+    updateButtons(theme);
+  }
+
+  // Init
+  updateButtons(getStoredTheme());
+
+  // Listen for system preference changes when in auto mode
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (getStoredTheme() === 'auto') applyTheme('auto');
+  });
+
+  document.querySelectorAll<HTMLElement>('.theme-btn').forEach(btn => {
+    btn.addEventListener('click', () => setTheme(btn.dataset.theme!));
   });
 </script>

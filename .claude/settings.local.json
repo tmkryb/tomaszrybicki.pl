@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"C:\\\\git\\\\consulting-site\" && npm run build 2>&1)"
+    ]
+  }
+}
