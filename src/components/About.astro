@@ -1,0 +1,95 @@
+---
+const techAreas = [
+  'TypeScript / JavaScript',
+  'React / Web Components',
+  '.NET / C#',
+  'Node.js',
+  'Frontend Architecture',
+  'Micro-frontends',
+  'REST / GraphQL / gRPC',
+  'Event-driven systems',
+  'Azure / AWS',
+  'CI/CD & Build tooling',
+  'Design Systems',
+  'Distributed systems',
+];
+---
+
+<section id="o-mnie" class="py-24 md:py-32 bg-bg-surface relative overflow-hidden">
+  <div class="absolute inset-0 grid-bg opacity-20"></div>
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
+      <div>
+        <div class="section-label">O mnie</div>
+        <h2 class="text-3xl md:text-4xl font-bold text-ink mb-6 leading-tight">
+          Engineer, który wyrósł<br />z praktyki
+        </h2>
+
+        <div class="space-y-4 text-ink-muted text-base leading-relaxed">
+          <p>
+            Mam ponad <strong class="text-ink font-medium">14 lat doświadczenia</strong> w software engineering —
+            od pisania kodu w złożonych systemach webowych i enterprise, przez
+            prowadzenie zespołów i podejmowanie decyzji architektonicznych,
+            aż po doradztwo techniczne dla organizacji borykających się z realnym chaosem.
+          </p>
+          <p>
+            Przez większość kariery pracowałem na styku kodu, architektury i decyzji
+            technicznych — w środowiskach enterprise, platformach produktowych, systemach
+            rozproszonych i ekosystemach frontendowych. To daje mi perspektywę, której
+            brakuje "papierowym architektom": rozumiem co znaczy wdrożyć zmianę
+            w żywym systemie.
+          </p>
+          <p>
+            Nie sprzedaję mody technologicznej. Pomagam ocenić, co naprawdę warto poprawiać,
+            co jest teoretycznym problemem, a co może zaczekać. Zawsze z perspektywą wpływu na biznes i delivery.
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="#kontakt"
+            class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-medium px-5 py-2.5 rounded-lg transition-colors text-sm"
+          >
+            Porozmawiajmy
+          </a>
+          <a
+            href="https://www.linkedin.com/in/tomasz-rybicki/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 border border-border hover:border-border-light text-ink-muted hover:text-ink font-medium px-5 py-2.5 rounded-lg transition-colors text-sm"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <!-- Photo placeholder -->
+        <div class="w-full aspect-square max-w-sm mx-auto rounded-2xl bg-bg-card border border-border flex items-center justify-center mb-8 relative overflow-hidden">
+          <div class="absolute inset-0 grid-bg opacity-40"></div>
+          <div class="relative text-center">
+            <div class="w-20 h-20 rounded-full bg-bg-elevated border border-border mx-auto mb-3 flex items-center justify-center">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4a5f7a" stroke-width="1.5" stroke-linecap="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <p class="text-ink-subtle text-xs font-mono">Twoje zdjęcie tutaj</p>
+          </div>
+        </div>
+
+        <h3 class="text-ink font-semibold text-sm mb-4 uppercase tracking-widest text-ink-muted">Technologie i obszary</h3>
+        <div class="flex flex-wrap gap-2">
+          {techAreas.map(tech => (
+            <span class="text-xs font-mono text-ink-muted border border-border bg-bg-card px-3 py-1.5 rounded-lg hover:border-border-light hover:text-ink transition-colors cursor-default">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

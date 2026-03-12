@@ -1,0 +1,91 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+type Props = { entry: CollectionEntry<'articles'> };
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<Layout
+  title={`${entry.data.title} | Tomasz Rybicki`}
+  description={entry.data.description}
+>
+  <Nav />
+  <main class="pt-32 pb-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <a
+        href="/artykuly"
+        class="inline-flex items-center gap-2 text-ink-muted hover:text-ink text-sm mb-10 transition-colors"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Wróć do artykułów
+      </a>
+
+      <div class="mb-10">
+        <div class="flex flex-wrap gap-2 mb-4">
+          {entry.data.tags?.map(tag => (
+            <span class="text-xs font-mono text-ink-muted border border-border px-2.5 py-1 rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
+          {entry.data.title}
+        </h1>
+        <p class="text-ink-muted text-lg leading-relaxed mb-4">{entry.data.description}</p>
+        <time class="text-ink-subtle text-xs font-mono" datetime={entry.data.publishDate.toISOString()}>
+          {formatDate(entry.data.publishDate)}
+        </time>
+      </div>
+
+      <hr class="border-border mb-10" />
+
+      <div class="prose-content">
+        <Content />
+      </div>
+
+      <div class="mt-16 p-8 bg-bg-card border border-border rounded-2xl">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-full bg-bg-elevated border border-border flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a5f7a" stroke-width="1.5" stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-ink font-semibold text-sm mb-1">Tomasz Rybicki</div>
+            <div class="text-ink-muted text-sm leading-relaxed">
+              Senior konsultant technologiczny i software architect z 14-letnim doświadczeniem.
+              Pomagam firmom upraszczać złożone systemy i podejmować lepsze decyzje techniczne.
+            </div>
+            <a href="/#kontakt" class="inline-flex items-center gap-1.5 text-accent text-sm font-medium mt-3 hover:underline">
+              Skontaktuj się
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

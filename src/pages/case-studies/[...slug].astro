@@ -1,0 +1,99 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const caseStudies = await getCollection('case-studies');
+  return caseStudies.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+type Props = { entry: CollectionEntry<'case-studies'> };
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long' });
+}
+---
+
+<Layout title={`${entry.data.title} — Case Study | Tomasz Rybicki`}>
+  <Nav />
+  <main class="pt-32 pb-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <!-- Back link -->
+      <a
+        href="/#case-studies"
+        class="inline-flex items-center gap-2 text-ink-muted hover:text-ink text-sm mb-10 transition-colors"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Wróć do case studies
+      </a>
+
+      <!-- Header -->
+      <div class="mb-10">
+        <div class="flex flex-wrap gap-2 mb-4">
+          {entry.data.tags?.map(tag => (
+            <span class="text-xs font-mono text-accent bg-accent/10 border border-accent/20 px-2.5 py-1 rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
+          {entry.data.title}
+        </h1>
+        <p class="text-ink-muted text-lg leading-relaxed">{entry.data.problem}</p>
+
+        <div class="flex flex-wrap gap-6 mt-6 pt-6 border-t border-border">
+          {entry.data.industry && (
+            <div>
+              <span class="text-ink-subtle text-xs uppercase tracking-wide font-mono block mb-0.5">Branża</span>
+              <span class="text-ink-muted text-sm">{entry.data.industry}</span>
+            </div>
+          )}
+          {entry.data.duration && (
+            <div>
+              <span class="text-ink-subtle text-xs uppercase tracking-wide font-mono block mb-0.5">Czas trwania</span>
+              <span class="text-ink-muted text-sm">{entry.data.duration}</span>
+            </div>
+          )}
+          <div>
+            <span class="text-ink-subtle text-xs uppercase tracking-wide font-mono block mb-0.5">Data</span>
+            <span class="text-ink-muted text-sm">{formatDate(entry.data.publishDate)}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="prose-content">
+        <Content />
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 p-8 bg-bg-card border border-border rounded-2xl text-center">
+        <h2 class="text-ink font-semibold text-xl mb-2">Masz podobny problem?</h2>
+        <p class="text-ink-muted text-sm mb-6 max-w-md mx-auto">
+          Każdy system jest inny, ale wiele problemów jest zaskakująco podobnych.
+          Napisz — omówimy, czy i jak mogę pomóc.
+        </p>
+        <a
+          href="/#kontakt"
+          class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm"
+        >
+          Umów rozmowę
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

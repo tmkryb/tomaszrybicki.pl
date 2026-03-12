@@ -1,0 +1,68 @@
+---
+const services = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="8" y1="9" x2="8" y2="21"/></svg>`,
+    title: 'Architektura i porządkowanie systemów',
+    desc: 'Analiza i ocena obecnej architektury, identyfikacja ryzyk technicznych, upraszczanie złożonych rozwiązań i poprawa granic między modułami. Wskazuję kierunek zmian — bez rewolucji bez sensu.',
+    tags: ['Architecture review', 'System design', 'Modularization'],
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`,
+    title: 'Dług technologiczny',
+    desc: 'Identyfikacja źródeł długu, ocena jego realnego wpływu na delivery i utrzymanie, priorytetyzacja i plan redukcji. Rozróżniam dług, który boli biznes, od tego, który tylko źle wygląda na slajdzie.',
+    tags: ['Tech debt audit', 'Risk assessment', 'Reduction roadmap'],
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>`,
+    title: 'Platform engineering / Frontend platform',
+    desc: 'Budowa wspólnych fundamentów dla wielu aplikacji i zespołów. Design system, shared libraries, web components, standaryzacja buildów i CI/CD. Ograniczanie chaosu przy wielu frontendach.',
+    tags: ['Design system', 'Micro-frontends', 'DX / Build tooling'],
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>`,
+    title: 'Integracje i systemy rozproszone',
+    desc: 'Projektowanie integracji między systemami, komunikacja między usługami, API contracts, event-driven i message-driven tam, gdzie naprawdę ma sens. Bez niepotrzebnej komplikacji.',
+    tags: ['API design', 'Event-driven', 'Distributed systems'],
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    title: 'Doradztwo techniczne dla liderów',
+    desc: 'Wsparcie decyzyjne dla CTO, Engineering Managerów i Tech Leadów. Konsultacje przy kluczowych decyzjach architektonicznych, review kierunku technicznego, pomoc w przejściu od gaszenia pożarów do świadomego rozwoju.',
+    tags: ['Technical advisory', 'Architecture review', 'Decision support'],
+  },
+];
+---
+
+<section id="uslugi" class="py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="mb-14">
+      <div class="section-label">W czym pomagam</div>
+      <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4 max-w-2xl leading-tight">
+        Zakres usług i kompetencji
+      </h2>
+      <p class="text-ink-muted text-lg max-w-xl leading-relaxed">
+        Pracuję na styku developmentu, architektury i decyzji technicznych.
+        Poniżej obszary, w których pomagam firmom działać lepiej.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {services.map((s, i) => (
+        <div class={`card group ${i === 4 ? 'md:col-span-2 lg:col-span-1' : ''}`}>
+          <div class="w-10 h-10 rounded-lg bg-bg-elevated flex items-center justify-center text-accent mb-4 group-hover:bg-accent/10 transition-colors">
+            <Fragment set:html={s.icon} />
+          </div>
+          <h3 class="text-ink font-semibold text-base mb-2 leading-snug">{s.title}</h3>
+          <p class="text-ink-muted text-sm leading-relaxed mb-4">{s.desc}</p>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            {s.tags.map(tag => (
+              <span class="text-xs text-ink-subtle border border-border px-2 py-0.5 rounded-full font-mono">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

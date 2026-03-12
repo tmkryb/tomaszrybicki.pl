@@ -1,0 +1,82 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Zrozumienie kontekstu',
+    desc: 'Zaczynam od słuchania — biznesowego i technicznego. Chcę rozumieć, jak działa firma, jakie ma cele, jakie presje i gdzie leżą realne problemy. Bez tego nie ma sensu mówić o architekturze.',
+  },
+  {
+    num: '02',
+    title: 'Analiza problemów i ryzyk',
+    desc: 'Przeglądam kod, diagramy, historię decyzji, rozmawiam z zespołem. Szukam źródeł problemów, zależności i ryzyk — nie tylko objawów. Staram się zobaczyć system jako całość.',
+  },
+  {
+    num: '03',
+    title: 'Wskazanie kierunków zmian',
+    desc: 'Na podstawie analizy wskazuję, co jest najbardziej opłacalne do poprawy — biorąc pod uwagę realne koszty, ryzyko i wpływ na delivery. Nie robię listy "bo tak powinno być", tylko konkretne rekomendacje.',
+  },
+  {
+    num: '04',
+    title: 'Plan wdrożenia etapami',
+    desc: 'Dobre rekomendacje muszą dać się wdrożyć. Dostarczam plan podzielony na etapy, który można realizować bez zatrzymywania bieżącej pracy. Ewolucja zamiast rewolucji.',
+  },
+  {
+    num: '05',
+    title: 'Wsparcie przy wdrożeniu',
+    desc: 'Nie kończę na PDF-ie z rekomendacjami. Mogę towarzyszyć zespołowi przy wdrożeniu, robić przeglądy kodu, uczestniczyć w kluczowych decyzjach lub pełnić rolę external advisor.',
+  },
+];
+
+const principles = [
+  'Pragmatyzm przed elegancją',
+  'Zero architektury dla samej architektury',
+  'Prostota i czytelność ponad złożoność',
+  'Decyzje techniczne powiązane z wpływem na biznes',
+  'Ewolucja zamiast rewolucji',
+];
+---
+
+<section id="jak-pracuje" class="py-24 md:py-32">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-[1fr_2fr] gap-16 items-start">
+      <div class="lg:sticky lg:top-24">
+        <div class="section-label">Jak pracuję</div>
+        <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
+          Moje podejście do współpracy
+        </h2>
+        <p class="text-ink-muted text-base leading-relaxed mb-8">
+          Łączę strategiczne myślenie z doświadczeniem wykonawczym.
+          Nie sprzedaję mody technologicznej — pomagam podejmować sensowne decyzje.
+        </p>
+
+        <div class="space-y-2.5">
+          {principles.map(p => (
+            <div class="flex items-center gap-2.5 text-sm text-ink-muted">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f8ef7" stroke-width="2.5" stroke-linecap="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              {p}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        {steps.map((step, i) => (
+          <div class="card flex gap-5 items-start">
+            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-bg-elevated flex items-center justify-center">
+              <span class="font-mono text-xs font-medium text-accent">{step.num}</span>
+            </div>
+            <div>
+              <h3 class="text-ink font-semibold text-base mb-1.5">{step.title}</h3>
+              <p class="text-ink-muted text-sm leading-relaxed">{step.desc}</p>
+            </div>
+            {i < steps.length - 1 && (
+              <div class="absolute left-[2.75rem] hidden"></div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
