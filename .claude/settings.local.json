@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(cd \"C:\\\\git\\\\consulting-site\" && npm run build 2>&1)"
+      "Bash(cd \"C:\\\\git\\\\consulting-site\" && npm run build 2>&1)",
+      "Bash(find \"C:\\\\git\\\\consulting-site\\\\src\\\\content\" -type f -name \"*.md\" -o -name \"*.mdx\" 2>/dev/null | head -20)",
+      "Bash(npm run:*)",
+      "Bash(ls C:/git/consulting-site/dist/_astro/*.css 2>/dev/null && grep -l 'data-lang' C:/git/consulting-site/dist/_astro/*.css 2>/dev/null)"
     ]
   }
 }

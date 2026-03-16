@@ -6,8 +6,11 @@ const articles = allArticles
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
   .slice(0, 3);
 
-function formatDate(date: Date) {
+function formatDatePl(date: Date) {
   return date.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+function formatDateEn(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 ---
 
@@ -16,20 +19,27 @@ function formatDate(date: Date) {
   <div class="relative max-w-6xl mx-auto px-6">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
       <div>
-        <div class="section-label">Artykuły</div>
+        <div class="section-label">
+          <span data-lang="pl">Artykuły</span>
+          <span data-lang="en">Articles</span>
+        </div>
         <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
-          Praktyczne spojrzenie na technologię
+          <span data-lang="pl">Praktyczne spojrzenie na technologię</span>
+          <span data-lang="en">A practical take on technology</span>
         </h2>
         <p class="text-ink-muted text-lg max-w-xl leading-relaxed">
-          Piszę o architekturze, długu technicznym, platformach frontendowych i podejmowaniu
-          sensownych decyzji technicznych. Bez teorii dla teorii.
+          <span data-lang="pl">Piszę o architekturze, długu technicznym, platformach frontendowych i podejmowaniu
+          sensownych decyzji technicznych. Bez teorii dla teorii.</span>
+          <span data-lang="en">I write about architecture, technical debt, frontend platforms, and making
+          sensible technical decisions. No theory for theory's sake.</span>
         </p>
       </div>
       <a
         href="/artykuly"
         class="flex-shrink-0 inline-flex items-center gap-2 border border-border hover:border-border-light text-ink-muted hover:text-ink text-sm font-medium px-5 py-2.5 rounded-lg transition-all"
       >
-        Wszystkie artykuły
+        <span data-lang="pl">Wszystkie artykuły</span>
+        <span data-lang="en">All articles</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
@@ -52,7 +62,8 @@ function formatDate(date: Date) {
             </h3>
             <p class="text-ink-muted text-sm leading-relaxed mb-4">{article.data.description}</p>
             <time class="text-ink-subtle text-xs font-mono" datetime={article.data.publishDate.toISOString()}>
-              {formatDate(article.data.publishDate)}
+              <span data-lang="pl">{formatDatePl(article.data.publishDate)}</span>
+              <span data-lang="en">{formatDateEn(article.data.publishDate)}</span>
             </time>
           </a>
         ))}
@@ -63,18 +74,27 @@ function formatDate(date: Date) {
         {[
           {
             tags: ['Architektura', 'Pragmatyzm'],
-            title: 'Kiedy architektura pomaga, a kiedy przeszkadza',
-            desc: 'Architektura ma sens tylko wtedy, gdy rozwiązuje realny problem. Jak rozpoznać granicę między sensownym projektowaniem a overengineeringiem?',
+            title: { pl: 'Kiedy architektura pomaga, a kiedy przeszkadza', en: 'When architecture helps and when it hinders' },
+            desc: {
+              pl: 'Architektura ma sens tylko wtedy, gdy rozwiązuje realny problem. Jak rozpoznać granicę między sensownym projektowaniem a overengineeringiem?',
+              en: 'Architecture only makes sense when it solves a real problem. How to recognize the line between sensible design and overengineering?',
+            },
           },
           {
             tags: ['Tech Debt'],
-            title: 'Jak rozpoznawać realny dług technologiczny',
-            desc: 'Nie każdy brzydki kod to dług technologiczny. Nie każdy dług wymaga natychmiastowej spłaty. Jak odróżnić dług, który boli, od tego, który tylko źle wygląda?',
+            title: { pl: 'Jak rozpoznawać realny dług technologiczny', en: 'How to recognize real technical debt' },
+            desc: {
+              pl: 'Nie każdy brzydki kod to dług technologiczny. Nie każdy dług wymaga natychmiastowej spłaty. Jak odróżnić dług, który boli, od tego, który tylko źle wygląda?',
+              en: 'Not all ugly code is technical debt. Not all debt requires immediate repayment. How to distinguish debt that hurts from debt that just looks bad?',
+            },
           },
           {
             tags: ['Frontend', 'Microfrontends'],
-            title: 'Micro-frontends: kiedy mają sens, a kiedy to overengineering',
-            desc: 'Micro-frontends rozwiązują realne problemy w dużych organizacjach. Ale dla większości projektów są zbędną komplikacją. Jak podjąć tę decyzję?',
+            title: { pl: 'Micro-frontends: kiedy mają sens, a kiedy to overengineering', en: 'Micro-frontends: when they make sense and when it\'s overengineering' },
+            desc: {
+              pl: 'Micro-frontends rozwiązują realne problemy w dużych organizacjach. Ale dla większości projektów są zbędną komplikacją. Jak podjąć tę decyzję?',
+              en: 'Micro-frontends solve real problems in large organizations. But for most projects, they\'re unnecessary complexity. How to make this decision?',
+            },
           },
         ].map(article => (
           <div class="card flex flex-col opacity-70">
@@ -85,9 +105,18 @@ function formatDate(date: Date) {
                 </span>
               ))}
             </div>
-            <h3 class="text-ink font-semibold text-base mb-2 leading-snug flex-1">{article.title}</h3>
-            <p class="text-ink-muted text-sm leading-relaxed mb-4">{article.desc}</p>
-            <span class="text-ink-subtle text-xs font-mono">Wkrótce</span>
+            <h3 class="text-ink font-semibold text-base mb-2 leading-snug flex-1">
+              <span data-lang="pl">{article.title.pl}</span>
+              <span data-lang="en">{article.title.en}</span>
+            </h3>
+            <p class="text-ink-muted text-sm leading-relaxed mb-4">
+              <span data-lang="pl">{article.desc.pl}</span>
+              <span data-lang="en">{article.desc.en}</span>
+            </p>
+            <span class="text-ink-subtle text-xs font-mono">
+              <span data-lang="pl">Wkrótce</span>
+              <span data-lang="en">Coming soon</span>
+            </span>
           </div>
         ))}
       </div>

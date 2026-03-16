@@ -3,5 +3,5 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://twojadomena.pl',
+  site: 'https://tomaszrybicki.pl',
 });

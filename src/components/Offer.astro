@@ -2,39 +2,57 @@
 const offers = [
   {
     icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
-    title: 'Konsultacje techniczne',
-    desc: 'Jednorazowe lub cykliczne sesje, na których omawiamy konkretne problemy techniczne, decyzje architektoniczne lub wyzwania organizacyjne. Dla liderów technicznych szukających zewnętrznego punktu widzenia.',
-    type: 'jednorazowe / cykliczne',
+    title: { pl: 'Konsultacje techniczne', en: 'Technical consultations' },
+    desc: {
+      pl: 'Jednorazowe lub cykliczne sesje, na których omawiamy konkretne problemy techniczne, decyzje architektoniczne lub wyzwania organizacyjne. Dla liderów technicznych szukających zewnętrznego punktu widzenia.',
+      en: 'One-time or recurring sessions where we discuss specific technical problems, architectural decisions, or organizational challenges. For technical leaders looking for an outside perspective.',
+    },
+    type: { pl: 'jednorazowe / cykliczne', en: 'one-time / recurring' },
   },
   {
     icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>`,
-    title: 'Audyt architektury / długu technicznego',
-    desc: 'Głęboka analiza systemu: architektura, zależności, ryzyka, dług technologiczny. Dostarczam raport z priorytetyzowanymi rekomendacjami i planem działań — nie listą problemów bez kontekstu.',
-    type: 'projekt z określonym zakresem',
+    title: { pl: 'Audyt architektury / długu technicznego', en: 'Architecture / tech debt audit' },
+    desc: {
+      pl: 'Głęboka analiza systemu: architektura, zależności, ryzyka, dług technologiczny. Dostarczam raport z priorytetyzowanymi rekomendacjami i planem działań — nie listą problemów bez kontekstu.',
+      en: 'Deep system analysis: architecture, dependencies, risks, technical debt. I deliver a report with prioritized recommendations and action plan — not a list of problems without context.',
+    },
+    type: { pl: 'projekt z określonym zakresem', en: 'scoped project' },
   },
   {
     icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
-    title: 'Warsztaty techniczne',
-    desc: 'Interaktywne warsztaty dla zespołu lub liderów. Tematyka dopasowana do potrzeb: architektura, dług technologiczny, frontend platform, integracje, podejmowanie decyzji technicznych.',
-    type: 'dla zespołu',
+    title: { pl: 'Warsztaty techniczne', en: 'Technical workshops' },
+    desc: {
+      pl: 'Interaktywne warsztaty dla zespołu lub liderów. Tematyka dopasowana do potrzeb: architektura, dług technologiczny, frontend platform, integracje, podejmowanie decyzji technicznych.',
+      en: 'Interactive workshops for teams or leaders. Topics tailored to needs: architecture, technical debt, frontend platform, integrations, technical decision-making.',
+    },
+    type: { pl: 'dla zespołu', en: 'for teams' },
   },
   {
     icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="11" x2="23" y2="17"/><line x1="20" y1="14" x2="26" y2="14"/></svg>`,
-    title: 'Wsparcie architektoniczne dla zespołu',
-    desc: 'Regularne wsparcie dla zespołu lub liderów technicznych: przeglądy kodu i architektury, uczestnictwo w kluczowych decyzjach, mentoring. Działam jako external expert, nie zastępuję wewnętrznych zasobów.',
-    type: 'ciągła współpraca',
+    title: { pl: 'Wsparcie architektoniczne dla zespołu', en: 'Architectural support for teams' },
+    desc: {
+      pl: 'Regularne wsparcie dla zespołu lub liderów technicznych: przeglądy kodu i architektury, uczestnictwo w kluczowych decyzjach, mentoring. Działam jako external expert, nie zastępuję wewnętrznych zasobów.',
+      en: 'Regular support for teams or technical leaders: code and architecture reviews, participation in key decisions, mentoring. I act as an external expert, not replacing internal resources.',
+    },
+    type: { pl: 'ciągła współpraca', en: 'ongoing collaboration' },
   },
   {
     icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
-    title: 'Advisory / External CTO',
-    desc: 'Długoterminowa rola external advisora lub fractional CTO. Pomagam w budowaniu strategii technicznej, rekrutacji liderów, ocenie kierunku technicznego i kluczowych decyzjach. Dla firm produktowych i scale-upów.',
-    type: 'długoterminowa współpraca',
+    title: { pl: 'Advisory / External CTO', en: 'Advisory / External CTO' },
+    desc: {
+      pl: 'Długoterminowa rola external advisora lub fractional CTO. Pomagam w budowaniu strategii technicznej, rekrutacji liderów, ocenie kierunku technicznego i kluczowych decyzjach. Dla firm produktowych i scale-upów.',
+      en: 'Long-term role as external advisor or fractional CTO. I help build technical strategy, recruit leaders, evaluate technical direction, and make key decisions. For product companies and scale-ups.',
+    },
+    type: { pl: 'długoterminowa współpraca', en: 'long-term collaboration' },
   },
   {
     icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
-    title: 'Doraźne wsparcie decyzyjne',
-    desc: 'Masz przed sobą ważną decyzję architektoniczną i chcesz ją omówić z kimś, kto widział różne konteksty? Jednorazowe konsultacje przy konkretnym wyborze — wybór technologii, zmiany strukturalne, migracje.',
-    type: 'jednorazowe',
+    title: { pl: 'Doraźne wsparcie decyzyjne', en: 'Ad-hoc decision support' },
+    desc: {
+      pl: 'Masz przed sobą ważną decyzję architektoniczną i chcesz ją omówić z kimś, kto widział różne konteksty? Jednorazowe konsultacje przy konkretnym wyborze — wybór technologii, zmiany strukturalne, migracje.',
+      en: 'Facing an important architectural decision and want to discuss it with someone who\'s seen various contexts? One-time consultations on specific choices — technology selection, structural changes, migrations.',
+    },
+    type: { pl: 'jednorazowe', en: 'one-time' },
   },
 ];
 ---
@@ -42,14 +60,21 @@ const offers = [
 <section id="oferta" class="py-24 md:py-32">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-14">
-      <div class="section-label">Oferta współpracy</div>
+      <div class="section-label">
+        <span data-lang="pl">Oferta współpracy</span>
+        <span data-lang="en">Collaboration offer</span>
+      </div>
       <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
-        Jak możemy pracować razem
+        <span data-lang="pl">Jak możemy pracować razem</span>
+        <span data-lang="en">How we can work together</span>
       </h2>
       <p class="text-ink-muted text-lg max-w-xl leading-relaxed">
-        Współpraca może być jednorazowa, projektowa lub długoterminowa.
+        <span data-lang="pl">Współpraca może być jednorazowa, projektowa lub długoterminowa.
         Mogę wejść jako external expert — nie muszę zastępować całego zespołu,
-        żeby pomóc mu działać lepiej.
+        żeby pomóc mu działać lepiej.</span>
+        <span data-lang="en">Collaboration can be one-time, project-based, or long-term.
+        I can come in as an external expert — I don't need to replace the entire team
+        to help it perform better.</span>
       </p>
     </div>
 
@@ -61,12 +86,19 @@ const offers = [
               <Fragment set:html={offer.icon} />
             </div>
             <span class="text-xs font-mono text-ink-subtle border border-border px-2 py-1 rounded-full whitespace-nowrap">
-              {offer.type}
+              <span data-lang="pl">{offer.type.pl}</span>
+              <span data-lang="en">{offer.type.en}</span>
             </span>
           </div>
           <div>
-            <h3 class="text-ink font-semibold text-base mb-2 leading-snug">{offer.title}</h3>
-            <p class="text-ink-muted text-sm leading-relaxed">{offer.desc}</p>
+            <h3 class="text-ink font-semibold text-base mb-2 leading-snug">
+              <span data-lang="pl">{offer.title.pl}</span>
+              <span data-lang="en">{offer.title.en}</span>
+            </h3>
+            <p class="text-ink-muted text-sm leading-relaxed">
+              <span data-lang="pl">{offer.desc.pl}</span>
+              <span data-lang="en">{offer.desc.en}</span>
+            </p>
           </div>
         </div>
       ))}
@@ -74,14 +106,21 @@ const offers = [
 
     <div class="mt-12 p-8 border border-border bg-bg-card rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
-        <h3 class="text-ink font-semibold text-lg mb-1">Nie wiesz, od czego zacząć?</h3>
-        <p class="text-ink-muted text-sm">Napisz krótko, co chcesz osiągnąć lub jaki problem chcesz rozwiązać. Razem ustalimy, co ma sens.</p>
+        <h3 class="text-ink font-semibold text-lg mb-1">
+          <span data-lang="pl">Nie wiesz, od czego zacząć?</span>
+          <span data-lang="en">Don't know where to start?</span>
+        </h3>
+        <p class="text-ink-muted text-sm">
+          <span data-lang="pl">Napisz krótko, co chcesz osiągnąć lub jaki problem chcesz rozwiązać. Razem ustalimy, co ma sens.</span>
+          <span data-lang="en">Write briefly what you want to achieve or what problem you want to solve. We'll figure out what makes sense together.</span>
+        </p>
       </div>
       <a
         href="#kontakt"
         class="flex-shrink-0 inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-medium px-6 py-3 rounded-lg transition-colors text-sm"
       >
-        Porozmawiajmy
+        <span data-lang="pl">Porozmawiajmy</span>
+        <span data-lang="en">Let's talk</span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>

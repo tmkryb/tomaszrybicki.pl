@@ -33,8 +33,8 @@ Set `draft: true` in frontmatter to exclude content from listings.
 
 - Custom design tokens defined in `tailwind.config.mjs` — use these semantic names rather than raw hex values:
   - **Backgrounds:** `bg-background`, `bg-surface`, `bg-card`, `bg-elevated`
-  - **Accent (orange):** `accent-DEFAULT` (`#e8511e`), `accent-light`, `accent-dark`
-  - **Text (ink):** `ink-dark`, `ink-muted`, `ink-subtle`
+  - **Accent:** `accent-DEFAULT`, `accent-light`, `accent-dark`
+  - **Text (ink):** `ink-DEFAULT` (class: `text-ink`), `ink-muted`, `ink-subtle`
   - **Nav:** `nav-DEFAULT`, `nav-border`
 - Global CSS classes defined in `src/layouts/Layout.astro`: `.grid-bg`, `.section-label`, `.card`, `.prose-content`
 

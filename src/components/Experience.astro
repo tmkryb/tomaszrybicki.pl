@@ -2,63 +2,117 @@
 const areas = [
   {
     category: 'Architecture & Technical Strategy',
-    items: [
-      'System design i analiza architektury',
-      'Technical roadmapping',
-      'Modularyzacja i separacja odpowiedzialności',
-      'Domain-Driven Design (DDD)',
-      'Architecture Decision Records (ADR)',
-    ],
+    items: {
+      pl: [
+        'System design i analiza architektury',
+        'Technical roadmapping',
+        'Modularyzacja i separacja odpowiedzialności',
+        'Domain-Driven Design (DDD)',
+        'Architecture Decision Records (ADR)',
+      ],
+      en: [
+        'System design and architecture analysis',
+        'Technical roadmapping',
+        'Modularization and separation of concerns',
+        'Domain-Driven Design (DDD)',
+        'Architecture Decision Records (ADR)',
+      ],
+    },
   },
   {
     category: 'Frontend Platforms & Web Architecture',
-    items: [
-      'Frontend platform design',
-      'Micro-frontends i Web Components',
-      'React, TypeScript, modern JS ecosystem',
-      'Design System & shared component libraries',
-      'Module Federation, Webpack, Vite',
-    ],
+    items: {
+      pl: [
+        'Frontend platform design',
+        'Micro-frontends i Web Components',
+        'React, TypeScript, modern JS ecosystem',
+        'Design System & shared component libraries',
+        'Module Federation, Webpack, Vite',
+      ],
+      en: [
+        'Frontend platform design',
+        'Micro-frontends and Web Components',
+        'React, TypeScript, modern JS ecosystem',
+        'Design System & shared component libraries',
+        'Module Federation, Webpack, Vite',
+      ],
+    },
   },
   {
     category: '.NET / APIs / Integrations',
-    items: [
-      'C# / .NET 6/8',
-      'REST, GraphQL, gRPC',
-      'API design i API contracts',
-      'Backend for Frontend (BFF)',
-      'Legacy modernization',
-    ],
+    items: {
+      pl: [
+        'C# / .NET 6/8',
+        'REST, GraphQL, gRPC',
+        'API design i API contracts',
+        'Backend for Frontend (BFF)',
+        'Legacy modernization',
+      ],
+      en: [
+        'C# / .NET 6/8',
+        'REST, GraphQL, gRPC',
+        'API design and API contracts',
+        'Backend for Frontend (BFF)',
+        'Legacy modernization',
+      ],
+    },
   },
   {
     category: 'Cloud & Distributed Systems',
-    items: [
-      'Azure (App Services, Service Bus, Functions)',
-      'Architektura event-driven',
-      'Message queues i async communication',
-      'Resiliency patterns',
-      'Observability i monitoring',
-    ],
+    items: {
+      pl: [
+        'Azure (App Services, Service Bus, Functions)',
+        'Architektura event-driven',
+        'Message queues i async communication',
+        'Resiliency patterns',
+        'Observability i monitoring',
+      ],
+      en: [
+        'Azure (App Services, Service Bus, Functions)',
+        'Event-driven architecture',
+        'Message queues and async communication',
+        'Resiliency patterns',
+        'Observability and monitoring',
+      ],
+    },
   },
   {
     category: 'Developer Experience / Build & CI-CD',
-    items: [
-      'Build tooling i bundling strategy',
-      'Monorepo (Nx, Turborepo)',
-      'CI/CD pipelines (GitHub Actions, Azure DevOps)',
-      'Shared tooling i standardyzacja',
-      'Code quality gates i linting',
-    ],
+    items: {
+      pl: [
+        'Build tooling i bundling strategy',
+        'Monorepo (Nx, Turborepo)',
+        'CI/CD pipelines (GitHub Actions, Azure DevOps)',
+        'Shared tooling i standardyzacja',
+        'Code quality gates i linting',
+      ],
+      en: [
+        'Build tooling and bundling strategy',
+        'Monorepo (Nx, Turborepo)',
+        'CI/CD pipelines (GitHub Actions, Azure DevOps)',
+        'Shared tooling and standardization',
+        'Code quality gates and linting',
+      ],
+    },
   },
   {
     category: 'Technical Leadership / Consulting',
-    items: [
-      'Technical advisory dla CTO i Engineering Managerów',
-      'Architecture review i code review',
-      'Mentoring liderów technicznych',
-      'Ocena i redukcja długu technologicznego',
-      'Wsparcie decyzyjne przy kluczowych wyborach',
-    ],
+    items: {
+      pl: [
+        'Technical advisory dla CTO i Engineering Managerów',
+        'Architecture review i code review',
+        'Mentoring liderów technicznych',
+        'Ocena i redukcja długu technologicznego',
+        'Wsparcie decyzyjne przy kluczowych wyborach',
+      ],
+      en: [
+        'Technical advisory for CTOs and Engineering Managers',
+        'Architecture review and code review',
+        'Mentoring technical leaders',
+        'Technical debt assessment and reduction',
+        'Decision support for key choices',
+      ],
+    },
   },
 ];
 ---
@@ -66,12 +120,17 @@ const areas = [
 <section id="doswiadczenie" class="py-24 md:py-32">
   <div class="max-w-6xl mx-auto px-6">
     <div class="mb-14">
-      <div class="section-label">Obszary doświadczenia</div>
+      <div class="section-label">
+        <span data-lang="pl">Obszary doświadczenia</span>
+        <span data-lang="en">Areas of experience</span>
+      </div>
       <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
-        Szerokość i głębokość kompetencji
+        <span data-lang="pl">Szerokość i głębokość kompetencji</span>
+        <span data-lang="en">Breadth and depth of expertise</span>
       </h2>
       <p class="text-ink-muted text-lg max-w-xl leading-relaxed">
-        Nie lista technologii — obszary, w których mam realne, zbudowane latami doświadczenie.
+        <span data-lang="pl">Nie lista technologii — obszary, w których mam realne, zbudowane latami doświadczenie.</span>
+        <span data-lang="en">Not a list of technologies — areas where I have real, years-built experience.</span>
       </p>
     </div>
 
@@ -79,8 +138,16 @@ const areas = [
       {areas.map(area => (
         <div class="card">
           <h3 class="text-ink font-semibold text-sm mb-4 leading-snug">{area.category}</h3>
-          <ul class="space-y-2">
-            {area.items.map(item => (
+          <ul class="space-y-2" data-lang="pl">
+            {area.items.pl.map(item => (
+              <li class="flex items-start gap-2.5 text-ink-muted text-sm leading-relaxed">
+                <span class="mt-2 flex-shrink-0 w-1 h-1 rounded-full bg-accent/60"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <ul class="space-y-2" data-lang="en">
+            {area.items.en.map(item => (
               <li class="flex items-start gap-2.5 text-ink-muted text-sm leading-relaxed">
                 <span class="mt-2 flex-shrink-0 w-1 h-1 rounded-full bg-accent/60"></span>
                 {item}

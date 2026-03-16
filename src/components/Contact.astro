@@ -8,13 +8,19 @@
   <div class="relative max-w-6xl mx-auto px-6">
     <div class="grid lg:grid-cols-2 gap-16 items-start">
       <div>
-        <div class="section-label">Kontakt</div>
+        <div class="section-label">
+          <span data-lang="pl">Kontakt</span>
+          <span data-lang="en">Contact</span>
+        </div>
         <h2 class="text-3xl md:text-4xl font-bold text-ink mb-6 leading-tight">
-          Porozmawiajmy o Twoim<br />systemie
+          <span data-lang="pl">Porozmawiajmy o Twoim<br />systemie</span>
+          <span data-lang="en">Let's talk about your<br />system</span>
         </h2>
         <p class="text-ink-muted text-lg leading-relaxed mb-8">
-          Masz system, który stał się zbyt złożony? Chcesz uporządkować architekturę
-          albo lepiej zrozumieć źródła długu technologicznego? Napisz.
+          <span data-lang="pl">Masz system, który stał się zbyt złożony? Chcesz uporządkować architekturę
+          albo lepiej zrozumieć źródła długu technologicznego? Napisz.</span>
+          <span data-lang="en">Have a system that's become too complex? Want to streamline architecture
+          or better understand the sources of technical debt? Write to me.</span>
         </p>
 
         <div class="space-y-4">
@@ -59,15 +65,24 @@
               </svg>
             </div>
             <div>
-              <div class="text-ink-muted text-xs mb-0.5">Dostępność</div>
-              <div class="text-ink text-sm font-medium">Przyjmuję nowych klientów — Q2 2026</div>
+              <div class="text-ink-muted text-xs mb-0.5">
+                <span data-lang="pl">Dostępność</span>
+                <span data-lang="en">Availability</span>
+              </div>
+              <div class="text-ink text-sm font-medium">
+                <span data-lang="pl">Przyjmuję nowych klientów — Q2 2026</span>
+                <span data-lang="en">Accepting new clients — Q2 2026</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="bg-bg-card border border-border rounded-2xl p-8">
-        <h3 class="text-ink font-semibold text-lg mb-6">Napisz do mnie</h3>
+        <h3 class="text-ink font-semibold text-lg mb-6">
+          <span data-lang="pl">Napisz do mnie</span>
+          <span data-lang="en">Write to me</span>
+        </h3>
         <form
           id="contact-form"
           class="space-y-4"
@@ -75,13 +90,18 @@
           method="POST"
         >
           <div>
-            <label for="name" class="block text-ink-muted text-sm mb-1.5">Imię i nazwisko</label>
+            <label for="name" class="block text-ink-muted text-sm mb-1.5">
+              <span data-lang="pl">Imię i nazwisko</span>
+              <span data-lang="en">Full name</span>
+            </label>
             <input
               type="text"
               id="name"
               name="name"
               required
               placeholder="Tomasz Rybicki"
+              data-ph-pl="Tomasz Rybicki"
+              data-ph-en="John Smith"
               class="w-full bg-bg-elevated border border-border rounded-lg px-4 py-3 text-ink text-sm placeholder-ink-subtle focus:outline-none focus:border-accent transition-colors"
             />
           </div>
@@ -94,29 +114,41 @@
               name="email"
               required
               placeholder="tmkryb@gmail.com"
+              data-ph-pl="tmkryb@gmail.com"
+              data-ph-en="you@company.com"
               class="w-full bg-bg-elevated border border-border rounded-lg px-4 py-3 text-ink text-sm placeholder-ink-subtle focus:outline-none focus:border-accent transition-colors"
             />
           </div>
 
           <div>
-            <label for="company" class="block text-ink-muted text-sm mb-1.5">Firma <span class="text-ink-subtle">(opcjonalnie)</span></label>
+            <label for="company" class="block text-ink-muted text-sm mb-1.5">
+              <span data-lang="pl">Firma <span class="text-ink-subtle">(opcjonalnie)</span></span>
+              <span data-lang="en">Company <span class="text-ink-subtle">(optional)</span></span>
+            </label>
             <input
               type="text"
               id="company"
               name="company"
               placeholder="Twoja firma"
+              data-ph-pl="Twoja firma"
+              data-ph-en="Your company"
               class="w-full bg-bg-elevated border border-border rounded-lg px-4 py-3 text-ink text-sm placeholder-ink-subtle focus:outline-none focus:border-accent transition-colors"
             />
           </div>
 
           <div>
-            <label for="message" class="block text-ink-muted text-sm mb-1.5">Wiadomość</label>
+            <label for="message" class="block text-ink-muted text-sm mb-1.5">
+              <span data-lang="pl">Wiadomość</span>
+              <span data-lang="en">Message</span>
+            </label>
             <textarea
               id="message"
               name="message"
               required
               rows="4"
               placeholder="Opisz krótko, czego potrzebujesz lub jaki problem chcesz rozwiązać..."
+              data-ph-pl="Opisz krótko, czego potrzebujesz lub jaki problem chcesz rozwiązać..."
+              data-ph-en="Briefly describe what you need or what problem you want to solve..."
               class="w-full bg-bg-elevated border border-border rounded-lg px-4 py-3 text-ink text-sm placeholder-ink-subtle focus:outline-none focus:border-accent transition-colors resize-none"
             ></textarea>
           </div>
@@ -125,13 +157,15 @@
             type="submit"
             class="w-full bg-accent hover:bg-accent-dark text-white font-medium py-3 rounded-lg transition-colors text-sm flex items-center justify-center gap-2"
           >
-            Wyślij wiadomość
+            <span data-lang="pl">Wyślij wiadomość</span>
+            <span data-lang="en">Send message</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </button>
           <p class="text-ink-subtle text-xs text-center">
-            Odpowiadam zazwyczaj w ciągu 1–2 dni roboczych.
+            <span data-lang="pl">Odpowiadam zazwyczaj w ciągu 1–2 dni roboczych.</span>
+            <span data-lang="en">I usually respond within 1–2 business days.</span>
           </p>
         </form>
       </div>
@@ -140,13 +174,13 @@
 </section>
 
 <script>
-  // Simple Formspree integration - swap out for your preferred form handler
   const form = document.getElementById('contact-form') as HTMLFormElement;
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-      btn.textContent = 'Wysyłanie...';
+      const lang = document.documentElement.lang || 'pl';
+      btn.textContent = lang === 'en' ? 'Sending...' : 'Wysyłanie...';
       btn.disabled = true;
 
       try {
@@ -156,22 +190,29 @@
           headers: { Accept: 'application/json' },
         });
         if (res.ok) {
+          const successTitle = lang === 'en' ? 'Message sent!' : 'Wiadomość wysłana!';
+          const successDesc = lang === 'en' ? 'I\'ll get back to you soon.' : 'Odezwę się do Ciebie wkrótce.';
           form.innerHTML = `
             <div class="text-center py-8">
               <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgb(var(--color-accent))" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
-              <h4 class="text-ink font-semibold mb-2">Wiadomość wysłana!</h4>
-              <p class="text-ink-muted text-sm">Odezwę się do Ciebie wkrótce.</p>
+              <h4 class="text-ink font-semibold mb-2">${successTitle}</h4>
+              <p class="text-ink-muted text-sm">${successDesc}</p>
             </div>
           `;
         } else {
           throw new Error('Form submission failed');
         }
       } catch {
-        btn.textContent = 'Wyślij wiadomość';
+        btn.innerHTML = lang === 'en'
+          ? 'Send message <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'
+          : 'Wyślij wiadomość <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
         btn.disabled = false;
-        alert('Coś poszło nie tak. Napisz bezpośrednio na maila.');
+        const errorMsg = lang === 'en'
+          ? 'Something went wrong. Please email me directly.'
+          : 'Coś poszło nie tak. Napisz bezpośrednio na maila.';
+        alert(errorMsg);
       }
     });
   }

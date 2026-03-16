@@ -2,55 +2,95 @@
 const steps = [
   {
     num: '01',
-    title: 'Zrozumienie kontekstu',
-    desc: 'Zaczynam od słuchania — biznesowego i technicznego. Chcę rozumieć, jak działa firma, jakie ma cele, jakie presje i gdzie leżą realne problemy. Bez tego nie ma sensu mówić o architekturze.',
+    title: { pl: 'Zrozumienie kontekstu', en: 'Understanding context' },
+    desc: {
+      pl: 'Zaczynam od słuchania — biznesowego i technicznego. Chcę rozumieć, jak działa firma, jakie ma cele, jakie presje i gdzie leżą realne problemy. Bez tego nie ma sensu mówić o architekturze.',
+      en: 'I start by listening — to both business and technical sides. I want to understand how the company works, its goals, pressures, and where the real problems lie. Without that, talking about architecture is pointless.',
+    },
   },
   {
     num: '02',
-    title: 'Analiza problemów i ryzyk',
-    desc: 'Przeglądam kod, diagramy, historię decyzji, rozmawiam z zespołem. Szukam źródeł problemów, zależności i ryzyk — nie tylko objawów. Staram się zobaczyć system jako całość.',
+    title: { pl: 'Analiza problemów i ryzyk', en: 'Problem and risk analysis' },
+    desc: {
+      pl: 'Przeglądam kod, diagramy, historię decyzji, rozmawiam z zespołem. Szukam źródeł problemów, zależności i ryzyk — nie tylko objawów. Staram się zobaczyć system jako całość.',
+      en: 'I review code, diagrams, decision history, and talk to the team. I look for root causes, dependencies, and risks — not just symptoms. I try to see the system as a whole.',
+    },
   },
   {
     num: '03',
-    title: 'Wskazanie kierunków zmian',
-    desc: 'Na podstawie analizy wskazuję, co jest najbardziej opłacalne do poprawy — biorąc pod uwagę realne koszty, ryzyko i wpływ na delivery. Nie robię listy "bo tak powinno być", tylko konkretne rekomendacje.',
+    title: { pl: 'Wskazanie kierunków zmian', en: 'Recommending directions' },
+    desc: {
+      pl: 'Na podstawie analizy wskazuję, co jest najbardziej opłacalne do poprawy — biorąc pod uwagę realne koszty, ryzyko i wpływ na delivery. Nie robię listy "bo tak powinno być", tylko konkretne rekomendacje.',
+      en: 'Based on analysis, I identify what\'s most valuable to improve — considering real costs, risk, and impact on delivery. I don\'t make "should be" lists, I make concrete recommendations.',
+    },
   },
   {
     num: '04',
-    title: 'Plan wdrożenia etapami',
-    desc: 'Dobre rekomendacje muszą dać się wdrożyć. Dostarczam plan podzielony na etapy, który można realizować bez zatrzymywania bieżącej pracy. Ewolucja zamiast rewolucji.',
+    title: { pl: 'Plan wdrożenia etapami', en: 'Phased implementation plan' },
+    desc: {
+      pl: 'Dobre rekomendacje muszą dać się wdrożyć. Dostarczam plan podzielony na etapy, który można realizować bez zatrzymywania bieżącej pracy. Ewolucja zamiast rewolucji.',
+      en: 'Good recommendations must be implementable. I deliver a phased plan that can be executed without stopping ongoing work. Evolution over revolution.',
+    },
   },
   {
     num: '05',
-    title: 'Wsparcie przy wdrożeniu',
-    desc: 'Nie kończę na PDF-ie z rekomendacjami. Mogę towarzyszyć zespołowi przy wdrożeniu, robić przeglądy kodu, uczestniczyć w kluczowych decyzjach lub pełnić rolę external advisor.',
+    title: { pl: 'Wsparcie przy wdrożeniu', en: 'Implementation support' },
+    desc: {
+      pl: 'Nie kończę na PDF-ie z rekomendacjami. Mogę towarzyszyć zespołowi przy wdrożeniu, robić przeglądy kodu, uczestniczyć w kluczowych decyzjach lub pełnić rolę external advisor.',
+      en: 'I don\'t stop at a PDF with recommendations. I can accompany the team during implementation, do code reviews, participate in key decisions, or serve as an external advisor.',
+    },
   },
 ];
 
-const principles = [
-  'Pragmatyzm przed elegancją',
-  'Zero architektury dla samej architektury',
-  'Prostota i czytelność ponad złożoność',
-  'Decyzje techniczne powiązane z wpływem na biznes',
-  'Ewolucja zamiast rewolucji',
-];
+const principles = {
+  pl: [
+    'Pragmatyzm przed elegancją',
+    'Zero architektury dla samej architektury',
+    'Prostota i czytelność ponad złożoność',
+    'Decyzje techniczne powiązane z wpływem na biznes',
+    'Ewolucja zamiast rewolucji',
+  ],
+  en: [
+    'Pragmatism over elegance',
+    'No architecture for architecture\'s sake',
+    'Simplicity and clarity over complexity',
+    'Technical decisions tied to business impact',
+    'Evolution over revolution',
+  ],
+};
 ---
 
 <section id="jak-pracuje" class="py-24 md:py-32">
   <div class="max-w-6xl mx-auto px-6">
     <div class="grid lg:grid-cols-[1fr_2fr] gap-16 items-start">
       <div class="lg:sticky lg:top-24">
-        <div class="section-label">Jak pracuję</div>
+        <div class="section-label">
+          <span data-lang="pl">Jak pracuję</span>
+          <span data-lang="en">How I work</span>
+        </div>
         <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
-          Moje podejście do współpracy
+          <span data-lang="pl">Moje podejście do współpracy</span>
+          <span data-lang="en">My approach to collaboration</span>
         </h2>
         <p class="text-ink-muted text-base leading-relaxed mb-8">
-          Łączę strategiczne myślenie z doświadczeniem wykonawczym.
-          Nie sprzedaję mody technologicznej — pomagam podejmować sensowne decyzje.
+          <span data-lang="pl">Łączę strategiczne myślenie z doświadczeniem wykonawczym.
+          Nie sprzedaję mody technologicznej — pomagam podejmować sensowne decyzje.</span>
+          <span data-lang="en">I combine strategic thinking with hands-on experience.
+          I don't sell technology trends — I help make sensible decisions.</span>
         </p>
 
-        <div class="space-y-2.5">
-          {principles.map(p => (
+        <div class="space-y-2.5" data-lang="pl">
+          {principles.pl.map(p => (
+            <div class="flex items-center gap-2.5 text-sm text-ink-muted">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent" stroke-width="2.5" stroke-linecap="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              {p}
+            </div>
+          ))}
+        </div>
+        <div class="space-y-2.5" data-lang="en">
+          {principles.en.map(p => (
             <div class="flex items-center gap-2.5 text-sm text-ink-muted">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent" stroke-width="2.5" stroke-linecap="round">
                 <polyline points="20 6 9 17 4 12"/>
@@ -68,8 +108,14 @@ const principles = [
               <span class="font-mono text-xs font-medium text-accent">{step.num}</span>
             </div>
             <div>
-              <h3 class="text-ink font-semibold text-base mb-1.5">{step.title}</h3>
-              <p class="text-ink-muted text-sm leading-relaxed">{step.desc}</p>
+              <h3 class="text-ink font-semibold text-base mb-1.5">
+                <span data-lang="pl">{step.title.pl}</span>
+                <span data-lang="en">{step.title.en}</span>
+              </h3>
+              <p class="text-ink-muted text-sm leading-relaxed">
+                <span data-lang="pl">{step.desc.pl}</span>
+                <span data-lang="en">{step.desc.en}</span>
+              </p>
             </div>
             {i < steps.length - 1 && (
               <div class="absolute left-[2.75rem] hidden"></div>

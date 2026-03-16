@@ -17,8 +17,11 @@ type Props = { entry: CollectionEntry<'articles'> };
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-function formatDate(date: Date) {
+function formatDatePl(date: Date) {
   return date.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+function formatDateEn(date: Date) {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 ---
 
@@ -36,7 +39,8 @@ function formatDate(date: Date) {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
           <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
-        Wróć do artykułów
+        <span data-lang="pl">Wróć do artykułów</span>
+        <span data-lang="en">Back to articles</span>
       </a>
 
       <div class="mb-10">
@@ -52,7 +56,8 @@ function formatDate(date: Date) {
         </h1>
         <p class="text-ink-muted text-lg leading-relaxed mb-4">{entry.data.description}</p>
         <time class="text-ink-subtle text-xs font-mono" datetime={entry.data.publishDate.toISOString()}>
-          {formatDate(entry.data.publishDate)}
+          <span data-lang="pl">{formatDatePl(entry.data.publishDate)}</span>
+          <span data-lang="en">{formatDateEn(entry.data.publishDate)}</span>
         </time>
       </div>
 
@@ -73,11 +78,14 @@ function formatDate(date: Date) {
           <div>
             <div class="text-ink font-semibold text-sm mb-1">Tomasz Rybicki</div>
             <div class="text-ink-muted text-sm leading-relaxed">
-              Senior konsultant technologiczny i software architect z 14-letnim doświadczeniem.
-              Pomagam firmom upraszczać złożone systemy i podejmować lepsze decyzje techniczne.
+              <span data-lang="pl">Senior konsultant technologiczny i software architect z 14-letnim doświadczeniem.
+              Pomagam firmom upraszczać złożone systemy i podejmować lepsze decyzje techniczne.</span>
+              <span data-lang="en">Senior technology consultant and software architect with 14+ years of experience.
+              I help companies simplify complex systems and make better technical decisions.</span>
             </div>
             <a href="/#kontakt" class="inline-flex items-center gap-1.5 text-accent text-sm font-medium mt-3 hover:underline">
-              Skontaktuj się
+              <span data-lang="pl">Skontaktuj się</span>
+              <span data-lang="en">Get in touch</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>

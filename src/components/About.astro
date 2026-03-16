@@ -20,12 +20,16 @@ const techAreas = [
   <div class="relative max-w-6xl mx-auto px-6">
     <div class="grid lg:grid-cols-[1fr_1fr] gap-16 items-center">
       <div>
-        <div class="section-label">O mnie</div>
+        <div class="section-label">
+          <span data-lang="pl">O mnie</span>
+          <span data-lang="en">About me</span>
+        </div>
         <h2 class="text-3xl md:text-4xl font-bold text-ink mb-6 leading-tight">
-          Engineer, który wyrósł<br />z praktyki
+          <span data-lang="pl">Engineer, który wyrósł<br />z praktyki</span>
+          <span data-lang="en">An engineer grown<br />from practice</span>
         </h2>
 
-        <div class="space-y-4 text-ink-muted text-base leading-relaxed">
+        <div class="space-y-4 text-ink-muted text-base leading-relaxed" data-lang="pl">
           <p>
             Mam ponad <strong class="text-ink font-medium">14 lat doświadczenia</strong> w software engineering —
             od pisania kodu w złożonych systemach webowych i enterprise, przez
@@ -44,13 +48,33 @@ const techAreas = [
             co jest teoretycznym problemem, a co może zaczekać. Zawsze z perspektywą wpływu na biznes i delivery.
           </p>
         </div>
+        <div class="space-y-4 text-ink-muted text-base leading-relaxed" data-lang="en">
+          <p>
+            I have over <strong class="text-ink font-medium">14 years of experience</strong> in software engineering —
+            from writing code in complex web and enterprise systems, through
+            leading teams and making architectural decisions,
+            to technical advisory for organizations dealing with real chaos.
+          </p>
+          <p>
+            For most of my career, I've worked at the intersection of code, architecture, and technical
+            decisions — in enterprise environments, product platforms, distributed systems,
+            and frontend ecosystems. This gives me the perspective that
+            "paper architects" lack: I understand what it means to implement change
+            in a living system.
+          </p>
+          <p>
+            I don't sell technology trends. I help assess what's truly worth improving,
+            what's a theoretical problem, and what can wait. Always with a perspective on business and delivery impact.
+          </p>
+        </div>
 
         <div class="mt-8 flex flex-wrap gap-3">
           <a
             href="#kontakt"
             class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-medium px-5 py-2.5 rounded-lg transition-colors text-sm"
           >
-            Porozmawiajmy
+            <span data-lang="pl">Porozmawiajmy</span>
+            <span data-lang="en">Let's talk</span>
           </a>
           <a
             href="https://www.linkedin.com/in/tomasz-rybicki/"
@@ -67,21 +91,16 @@ const techAreas = [
       </div>
 
       <div>
-        <!-- Photo placeholder -->
-        <div class="w-full aspect-square max-w-sm mx-auto rounded-2xl bg-bg-card border border-border flex items-center justify-center mb-8 relative overflow-hidden">
-          <div class="absolute inset-0 grid-bg opacity-40"></div>
+        <div class="w-full aspect-square max-w-sm mx-auto rounded-2xl bg-bg-card border border-border flex items-center justify-center mb-8 relative overflow-hidden">          
+          <img src="/assets/Tomasz.jpg" />
           <div class="relative text-center">
-            <div class="w-20 h-20 rounded-full bg-bg-elevated border border-border mx-auto mb-3 flex items-center justify-center">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-ink-subtle">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-              </svg>
-            </div>
-            <p class="text-ink-subtle text-xs font-mono">Twoje zdjęcie tutaj</p>
           </div>
         </div>
 
-        <h3 class="text-ink font-semibold text-sm mb-4 uppercase tracking-widest text-ink-muted">Technologie i obszary</h3>
+        <h3 class="text-ink font-semibold text-sm mb-4 uppercase tracking-widest text-ink-muted">
+          <span data-lang="pl">Technologie i obszary</span>
+          <span data-lang="en">Technologies and areas</span>
+        </h3>
         <div class="flex flex-wrap gap-2">
           {techAreas.map(tech => (
             <span class="text-xs font-mono text-ink-muted border border-border bg-bg-card px-3 py-1.5 rounded-lg hover:border-border-light hover:text-ink transition-colors cursor-default">

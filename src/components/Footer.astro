@@ -2,12 +2,12 @@
 const year = new Date().getFullYear();
 
 const links = [
-  { href: '/#uslugi', label: 'W czym pomagam' },
-  { href: '/#jak-pracuje', label: 'Jak pracuję' },
-  { href: '/#o-mnie', label: 'O mnie' },
-  { href: '/#case-studies', label: 'Case studies' },
-  { href: '/artykuly', label: 'Artykuły' },
-  { href: '/#kontakt', label: 'Kontakt' },
+  { href: '/#uslugi', pl: 'W czym pomagam', en: 'What I do' },
+  { href: '/#jak-pracuje', pl: 'Jak pracuję', en: 'How I work' },
+  { href: '/#o-mnie', pl: 'O mnie', en: 'About me' },
+  { href: '/#case-studies', pl: 'Case studies', en: 'Case studies' },
+  { href: '/artykuly', pl: 'Artykuły', en: 'Articles' },
+  { href: '/#kontakt', pl: 'Kontakt', en: 'Contact' },
 ];
 ---
 
@@ -19,8 +19,10 @@ const links = [
           Tomasz Rybicki<span class="text-accent">.</span>
         </a>
         <p class="text-ink-muted text-sm mt-1 max-w-xs leading-relaxed">
-          Konsultant technologiczny & Software Architect.<br />
-          Pomagam upraszczać złożone systemy.
+          <span data-lang="pl">Konsultant technologiczny & Software Architect.<br />
+          Pomagam upraszczać złożone systemy.</span>
+          <span data-lang="en">Technology Consultant & Software Architect.<br />
+          I help simplify complex systems.</span>
         </p>
       </div>
 
@@ -30,7 +32,8 @@ const links = [
             href={link.href}
             class="text-ink-muted hover:text-ink text-sm transition-colors"
           >
-            {link.label}
+            <span data-lang="pl">{link.pl}</span>
+            <span data-lang="en">{link.en}</span>
           </a>
         ))}
       </nav>
@@ -38,7 +41,8 @@ const links = [
 
     <div class="mt-10 pt-6 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
       <p class="text-ink-subtle text-sm">
-        &copy; {year} Tomasz Rybicki. Wszelkie prawa zastrzeżone.
+        <span data-lang="pl">&copy; {year} Tomasz Rybicki. Wszelkie prawa zastrzeżone.</span>
+        <span data-lang="en">&copy; {year} Tomasz Rybicki. All rights reserved.</span>
       </p>
       <div class="flex items-center gap-4">
         <a

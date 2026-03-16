@@ -1,21 +1,34 @@
 ---
-const problems = [
-  'Wasz system działa, ale każda zmiana kosztuje za dużo czasu i energii.',
-  'Macie dużo zależności, wyjątków i ręcznych obejść — i nikt już nie pamięta, dlaczego tak jest.',
-  'Kilka zespołów pracuje nad wspólnym produktem, ale brakuje spójnych fundamentów i standardów.',
-  'Frontend robi się zlepkiem różnych podejść, narzędzi i epok technologicznych.',
-  'Architektura powstawała organicznie i dziś nikt nie ma całościowego obrazu systemu.',
-  'Zespół utknął między "trzeba dowozić" a "trzeba to w końcu uporządkować".',
-  'Chcecie poprawić architekturę bez zatrzymywania biznesu i bez dużej rewolucji.',
-  'Potrzebujecie partnera technicznego, który rozumie zarówno kod, jak i konsekwencje decyzji strategicznych.',
-  'Dług technologiczny spowalnia delivery, ale nie wiecie, od czego zacząć jego redukcję.',
-];
+const problems = {
+  pl: [
+    'Wasz system działa, ale każda zmiana kosztuje za dużo czasu i energii.',
+    'Macie dużo zależności, wyjątków i ręcznych obejść — i nikt już nie pamięta, dlaczego tak jest.',
+    'Kilka zespołów pracuje nad wspólnym produktem, ale brakuje spójnych fundamentów i standardów.',
+    'Frontend robi się zlepkiem różnych podejść, narzędzi i epok technologicznych.',
+    'Architektura powstawała organicznie i dziś nikt nie ma całościowego obrazu systemu.',
+    'Zespół utknął między "trzeba dowozić" a "trzeba to w końcu uporządkować".',
+    'Chcecie poprawić architekturę bez zatrzymywania biznesu i bez dużej rewolucji.',
+    'Potrzebujecie partnera technicznego, który rozumie zarówno kod, jak i konsekwencje decyzji strategicznych.',
+    'Dług technologiczny spowalnia delivery, ale nie wiecie, od czego zacząć jego redukcję.',
+  ],
+  en: [
+    'Your system works, but every change costs too much time and energy.',
+    'You have lots of dependencies, exceptions, and manual workarounds — and nobody remembers why.',
+    'Multiple teams work on a shared product, but there are no consistent foundations or standards.',
+    'The frontend has become a patchwork of different approaches, tools, and technological eras.',
+    'Architecture grew organically and today nobody has a complete picture of the system.',
+    'The team is stuck between "we need to deliver" and "we need to clean this up."',
+    'You want to improve architecture without stopping the business and without a big revolution.',
+    'You need a technical partner who understands both the code and the consequences of strategic decisions.',
+    'Technical debt is slowing down delivery, but you don\'t know where to start reducing it.',
+  ],
+};
 
 const audiences = [
-  { role: 'CTO', desc: 'Szukasz zewnętrznego spojrzenia na architekturę i techniczny kierunek firmy.' },
-  { role: 'Head of Engineering', desc: 'Potrzebujesz wsparcia w porządkowaniu procesów, standardów i decyzji technicznych.' },
-  { role: 'Engineering Manager', desc: 'Szukasz kogoś, kto pomoże zespołowi wyjść z chaosu i działać bardziej świadomie.' },
-  { role: 'Founder / CTO startartu', desc: 'Budujesz produkt i chcesz uniknąć pułapek, które będą boleć za 2 lata.' },
+  { role: 'CTO', desc: { pl: 'Szukasz zewnętrznego spojrzenia na architekturę i techniczny kierunek firmy.', en: 'You\'re looking for an outside perspective on architecture and technical direction.' } },
+  { role: 'Head of Engineering', desc: { pl: 'Potrzebujesz wsparcia w porządkowaniu procesów, standardów i decyzji technicznych.', en: 'You need support in organizing processes, standards, and technical decisions.' } },
+  { role: 'Engineering Manager', desc: { pl: 'Szukasz kogoś, kto pomoże zespołowi wyjść z chaosu i działać bardziej świadomie.', en: 'You\'re looking for someone to help the team move past chaos and work more deliberately.' } },
+  { role: 'Founder / CTO startartu', desc: { pl: 'Budujesz produkt i chcesz uniknąć pułapek, które będą boleć za 2 lata.', en: 'You\'re building a product and want to avoid pitfalls that will hurt in 2 years.' } },
 ];
 ---
 
@@ -24,16 +37,29 @@ const audiences = [
   <div class="relative max-w-6xl mx-auto px-6">
     <div class="grid lg:grid-cols-2 gap-16 items-start">
       <div>
-        <div class="section-label">Dla kogo</div>
+        <div class="section-label">
+          <span data-lang="pl">Dla kogo</span>
+          <span data-lang="en">Who it's for</span>
+        </div>
         <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
-          Moje usługi są dla Ciebie, jeśli...
+          <span data-lang="pl">Moje usługi są dla Ciebie, jeśli...</span>
+          <span data-lang="en">My services are for you if...</span>
         </h2>
         <p class="text-ink-muted text-lg leading-relaxed mb-10">
-          Pracuję z firmami, które mają realny problem techniczny — nie z tymi, które szukają kolejnego wykonawcy do ticketów.
+          <span data-lang="pl">Pracuję z firmami, które mają realny problem techniczny — nie z tymi, które szukają kolejnego wykonawcy do ticketów.</span>
+          <span data-lang="en">I work with companies that have a real technical problem — not those looking for another ticket executor.</span>
         </p>
 
-        <ul class="space-y-3">
-          {problems.map(p => (
+        <ul class="space-y-3" data-lang="pl">
+          {problems.pl.map(p => (
+            <li class="flex items-start gap-3 text-ink-muted text-sm leading-relaxed">
+              <span class="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-accent"></span>
+              {p}
+            </li>
+          ))}
+        </ul>
+        <ul class="space-y-3" data-lang="en">
+          {problems.en.map(p => (
             <li class="flex items-start gap-3 text-ink-muted text-sm leading-relaxed">
               <span class="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-accent"></span>
               {p}
@@ -43,7 +69,10 @@ const audiences = [
       </div>
 
       <div>
-        <h3 class="text-ink font-semibold text-lg mb-6">Kto zazwyczaj się odzywa</h3>
+        <h3 class="text-ink font-semibold text-lg mb-6">
+          <span data-lang="pl">Kto zazwyczaj się odzywa</span>
+          <span data-lang="en">Who typically reaches out</span>
+        </h3>
         <div class="space-y-4">
           {audiences.map(a => (
             <div class="card flex items-start gap-4">
@@ -52,16 +81,23 @@ const audiences = [
               </div>
               <div>
                 <div class="text-ink font-medium text-sm mb-1">{a.role}</div>
-                <div class="text-ink-muted text-sm leading-relaxed">{a.desc}</div>
+                <div class="text-ink-muted text-sm leading-relaxed">
+                  <span data-lang="pl">{a.desc.pl}</span>
+                  <span data-lang="en">{a.desc.en}</span>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
         <div class="mt-8 p-5 border border-accent/30 bg-accent/5 rounded-xl">
-          <p class="text-ink-muted text-sm leading-relaxed">
+          <p class="text-ink-muted text-sm leading-relaxed" data-lang="pl">
             <strong class="text-ink font-medium">Nie musisz wiedzieć, czego dokładnie potrzebujesz.</strong><br />
             Wystarczy, że czujesz, że coś technicznie idzie nie tak i chcesz to ze mną omówić.
+          </p>
+          <p class="text-ink-muted text-sm leading-relaxed" data-lang="en">
+            <strong class="text-ink font-medium">You don't need to know exactly what you need.</strong><br />
+            It's enough that you feel something is technically off and want to discuss it with me.
           </p>
         </div>
       </div>

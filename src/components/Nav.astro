@@ -1,11 +1,11 @@
 ---
 const navLinks = [
-  { href: '/#uslugi', label: 'W czym pomagam' },
-  { href: '/#jak-pracuje', label: 'Jak pracuję' },
-  { href: '/#o-mnie', label: 'O mnie' },
-  { href: '/#case-studies', label: 'Case studies' },
-  { href: '/artykuly', label: 'Artykuły' },
-  { href: '/#kontakt', label: 'Kontakt' },
+  { href: '/#uslugi', pl: 'W czym pomagam', en: 'What I do' },
+  { href: '/#jak-pracuje', pl: 'Jak pracuję', en: 'How I work' },
+  { href: '/#o-mnie', pl: 'O mnie', en: 'About me' },
+  { href: '/#case-studies', pl: 'Case studies', en: 'Case studies' },
+  { href: '/artykuly', pl: 'Artykuły', en: 'Articles' },
+  { href: '/#kontakt', pl: 'Kontakt', en: 'Contact' },
 ];
 ---
 
@@ -21,12 +21,20 @@ const navLinks = [
           href={link.href}
           class="text-white/60 hover:text-white text-sm transition-colors duration-200"
         >
-          {link.label}
+          <span data-lang="pl">{link.pl}</span>
+          <span data-lang="en">{link.en}</span>
         </a>
       ))}
     </div>
 
     <div class="hidden md:flex items-center gap-3">
+      <!-- Language toggle -->
+      <div class="flex items-center bg-white/10 rounded-lg p-1 gap-0.5">
+        <button data-lang-switch="pl" class="lang-btn px-2 py-1 rounded text-xs font-semibold transition-colors text-white/50 hover:text-white/90">PL</button>
+        <button data-lang-switch="en" class="lang-btn px-2 py-1 rounded text-xs font-semibold transition-colors text-white/50 hover:text-white/90">EN</button>
+      </div>
+
+      <!-- Theme toggle -->
       <div class="flex items-center bg-white/10 rounded-lg p-1 gap-0.5">
         <button data-theme="light" class="theme-btn p-1.5 rounded transition-colors text-white/50 hover:text-white/90" title="Jasny motyw">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -55,11 +63,19 @@ const navLinks = [
         href="/#kontakt"
         class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors duration-200"
       >
-        Umów rozmowę
+        <span data-lang="pl">Umów rozmowę</span>
+        <span data-lang="en">Book a call</span>
       </a>
     </div>
 
     <div class="md:hidden flex items-center gap-2">
+      <!-- Mobile language toggle -->
+      <div class="flex items-center bg-white/10 rounded-lg p-1 gap-0.5">
+        <button data-lang-switch="pl" class="lang-btn px-1.5 py-0.5 rounded text-[10px] font-semibold transition-colors text-white/50 hover:text-white/90">PL</button>
+        <button data-lang-switch="en" class="lang-btn px-1.5 py-0.5 rounded text-[10px] font-semibold transition-colors text-white/50 hover:text-white/90">EN</button>
+      </div>
+
+      <!-- Mobile theme toggle -->
       <div class="flex items-center bg-white/10 rounded-lg p-1 gap-0.5">
         <button data-theme="light" class="theme-btn p-1.5 rounded transition-colors text-white/50 hover:text-white/90">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -104,14 +120,16 @@ const navLinks = [
         href={link.href}
         class="block py-3 text-white/60 hover:text-white text-sm border-b border-nav-border last:border-0 transition-colors"
       >
-        {link.label}
+        <span data-lang="pl">{link.pl}</span>
+        <span data-lang="en">{link.en}</span>
       </a>
     ))}
     <a
       href="/#kontakt"
       class="block mt-4 bg-accent text-white text-sm font-medium px-4 py-3 rounded-lg text-center"
     >
-      Umów rozmowę
+      <span data-lang="pl">Umów rozmowę</span>
+      <span data-lang="en">Book a call</span>
     </a>
   </div>
 </nav>
@@ -167,15 +185,59 @@ const navLinks = [
     updateButtons(theme);
   }
 
-  // Init
+  // Init theme
   updateButtons(getStoredTheme());
 
-  // Listen for system preference changes when in auto mode
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     if (getStoredTheme() === 'auto') applyTheme('auto');
   });
 
   document.querySelectorAll<HTMLElement>('.theme-btn').forEach(btn => {
     btn.addEventListener('click', () => setTheme(btn.dataset.theme!));
+  });
+
+  // Language toggle
+  function getCurrentLang(): string {
+    return document.documentElement.lang || 'pl';
+  }
+
+  function updateLangButtons(lang: string) {
+    document.querySelectorAll<HTMLElement>('.lang-btn').forEach(btn => {
+      const active = btn.dataset.langSwitch === lang;
+      btn.classList.toggle('bg-white/20', active);
+      btn.classList.toggle('text-white', active);
+      btn.classList.toggle('text-white/50', !active);
+    });
+  }
+
+  function setLang(lang: string) {
+    document.documentElement.lang = lang;
+    localStorage.setItem('lang', lang);
+    const url = new URL(window.location.href);
+    if (lang === 'pl') {
+      url.searchParams.delete('lang');
+    } else {
+      url.searchParams.set('lang', lang);
+    }
+    window.history.replaceState({}, '', url.toString());
+    updateLangButtons(lang);
+    updatePlaceholders(lang);
+  }
+
+  function updatePlaceholders(lang: string) {
+    document.querySelectorAll<HTMLElement>('[data-ph-pl]').forEach(el => {
+      const val = el.getAttribute('data-ph-' + lang);
+      if (val && el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
+        (el as HTMLInputElement | HTMLTextAreaElement).placeholder = val;
+      }
+    });
+  }
+
+  // Init language buttons
+  updateLangButtons(getCurrentLang());
+  updatePlaceholders(getCurrentLang());
+
+  document.querySelectorAll<HTMLElement>('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => setLang(btn.dataset.langSwitch!));
   });
 </script>

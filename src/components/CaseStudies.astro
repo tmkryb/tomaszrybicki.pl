@@ -11,10 +11,12 @@ const cases = allCases.sort((a, b) => b.data.publishDate.getTime() - a.data.publ
     <div class="mb-14">
       <div class="section-label">Case studies</div>
       <h2 class="text-3xl md:text-4xl font-bold text-ink mb-4 leading-tight">
-        Przykładowe problemy, które rozwiązuję
+        <span data-lang="pl">Przykładowe problemy, które rozwiązuję</span>
+        <span data-lang="en">Example problems I solve</span>
       </h2>
       <p class="text-ink-muted text-lg max-w-xl leading-relaxed">
-        Konkretne sytuacje z praktyki. Bez nazw firm, z naciskiem na problem, podejście i rezultat.
+        <span data-lang="pl">Konkretne sytuacje z praktyki. Bez nazw firm, z naciskiem na problem, podejście i rezultat.</span>
+        <span data-lang="en">Real situations from practice. No company names, focusing on the problem, approach, and result.</span>
       </p>
     </div>
 
@@ -36,7 +38,8 @@ const cases = allCases.sort((a, b) => b.data.publishDate.getTime() - a.data.publ
               {cs.data.problem}
             </p>
             <div class="flex items-center gap-1.5 text-accent text-sm font-medium">
-              Czytaj więcej
+              <span data-lang="pl">Czytaj więcej</span>
+              <span data-lang="en">Read more</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
@@ -50,18 +53,27 @@ const cases = allCases.sort((a, b) => b.data.publishDate.getTime() - a.data.publ
         {[
           {
             tags: ['Frontend Platform'],
-            title: 'Porządkowanie frontendu w organizacji wielozespołowej',
-            problem: 'Kilka zespołów rozwijało osobne aplikacje bez wspólnych standardów. Każda miała własny bundler, własne komponenty, własne podejście do CSS. Integracja była koszmarem.',
+            title: { pl: 'Porządkowanie frontendu w organizacji wielozespołowej', en: 'Streamlining frontend in a multi-team organization' },
+            problem: {
+              pl: 'Kilka zespołów rozwijało osobne aplikacje bez wspólnych standardów. Każda miała własny bundler, własne komponenty, własne podejście do CSS. Integracja była koszmarem.',
+              en: 'Multiple teams developed separate applications without shared standards. Each had its own bundler, components, and CSS approach. Integration was a nightmare.',
+            },
           },
           {
             tags: ['Tech Debt', 'Architecture'],
-            title: 'Redukcja długu technologicznego bez zatrzymywania delivery',
-            problem: 'System e-commerce z 8-letnim długiem technicznym. Każda zmiana cennika zajmowała tygodnie. Biznes chciał nowych funkcji, zespół chciał rewrite\'a, który i tak by nie wyszedł.',
+            title: { pl: 'Redukcja długu technologicznego bez zatrzymywania delivery', en: 'Reducing technical debt without stopping delivery' },
+            problem: {
+              pl: 'System e-commerce z 8-letnim długiem technicznym. Każda zmiana cennika zajmowała tygodnie. Biznes chciał nowych funkcji, zespół chciał rewrite\'a, który i tak by nie wyszedł.',
+              en: 'An e-commerce system with 8 years of technical debt. Every pricing change took weeks. Business wanted new features, the team wanted a rewrite that wouldn\'t have worked anyway.',
+            },
           },
           {
             tags: ['Integration', 'Distributed'],
-            title: 'Uproszczenie architektury integracji w systemie B2B',
-            problem: 'Sieć 12 systemów połączonych point-to-point. Każda zmiana w jednym systemie wymagała modyfikacji w trzech innych. Nikt nie wiedział, co na co wpływa.',
+            title: { pl: 'Uproszczenie architektury integracji w systemie B2B', en: 'Simplifying integration architecture in a B2B system' },
+            problem: {
+              pl: 'Sieć 12 systemów połączonych point-to-point. Każda zmiana w jednym systemie wymagała modyfikacji w trzech innych. Nikt nie wiedział, co na co wpływa.',
+              en: 'A network of 12 systems connected point-to-point. Every change in one system required modifications in three others. Nobody knew what affected what.',
+            },
           },
         ].map(cs => (
           <div class="card flex flex-col opacity-80">
@@ -72,9 +84,18 @@ const cases = allCases.sort((a, b) => b.data.publishDate.getTime() - a.data.publ
                 </span>
               ))}
             </div>
-            <h3 class="text-ink font-semibold text-base mb-2 leading-snug">{cs.title}</h3>
-            <p class="text-ink-muted text-sm leading-relaxed flex-1 mb-4">{cs.problem}</p>
-            <p class="text-ink-subtle text-xs font-mono">Pełny opis — wkrótce</p>
+            <h3 class="text-ink font-semibold text-base mb-2 leading-snug">
+              <span data-lang="pl">{cs.title.pl}</span>
+              <span data-lang="en">{cs.title.en}</span>
+            </h3>
+            <p class="text-ink-muted text-sm leading-relaxed flex-1 mb-4">
+              <span data-lang="pl">{cs.problem.pl}</span>
+              <span data-lang="en">{cs.problem.en}</span>
+            </p>
+            <p class="text-ink-subtle text-xs font-mono">
+              <span data-lang="pl">Pełny opis — wkrótce</span>
+              <span data-lang="en">Full description — coming soon</span>
+            </p>
           </div>
         ))}
       </div>
@@ -86,7 +107,8 @@ const cases = allCases.sort((a, b) => b.data.publishDate.getTime() - a.data.publ
           href="/case-studies"
           class="inline-flex items-center gap-2 border border-border hover:border-border-light text-ink-muted hover:text-ink text-sm font-medium px-6 py-3 rounded-lg transition-all"
         >
-          Wszystkie case studies
+          <span data-lang="pl">Wszystkie case studies</span>
+          <span data-lang="en">All case studies</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>

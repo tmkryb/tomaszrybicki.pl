@@ -1,13 +1,17 @@
 ---
 interface Props {
   title?: string;
+  titleEn?: string;
   description?: string;
+  descriptionEn?: string;
   canonical?: string;
 }
 
 const {
   title = 'Tomasz Rybicki — Konsultant Technologiczny & Architekt',
+  titleEn = 'Tomasz Rybicki — Technology Consultant & Architect',
   description = 'Pomagam firmom upraszczać złożone systemy, porządkować architekturę i redukować dług technologiczny. Senior consultant i architect z 14-letnim doświadczeniem.',
+  descriptionEn = 'I help companies simplify complex systems, streamline architecture, and reduce technical debt. Senior consultant and architect with 14+ years of experience.',
   canonical,
 } = Astro.props;
 ---
@@ -17,16 +21,50 @@ const {
   <head>
     <script is:inline>
       (function () {
+        // Language detection: URL param > localStorage > default (pl)
+        var params = new URLSearchParams(window.location.search);
+        var urlLang = params.get('lang');
+        var lang;
+        if (urlLang === 'en' || urlLang === 'pl') {
+          lang = urlLang;
+          localStorage.setItem('lang', lang);
+        } else {
+          lang = localStorage.getItem('lang') || 'pl';
+        }
+        document.documentElement.lang = lang;
+        // Sync URL if not default
+        if (lang !== 'pl' && !urlLang) {
+          var url = new URL(window.location);
+          url.searchParams.set('lang', lang);
+          window.history.replaceState({}, '', url);
+        }
+
+        // Theme detection
         var t = localStorage.getItem('theme') || 'auto';
         if (t === 'dark' || (t === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark');
+        }
+
+        // Update document title and meta based on language
+        if (lang === 'en') {
+          var enTitle = document.querySelector('meta[name="title-en"]');
+          var enDesc = document.querySelector('meta[name="description-en"]');
+          if (enTitle) document.title = enTitle.content;
+          if (enDesc) {
+            var descMeta = document.querySelector('meta[name="description"]');
+            var ogDesc = document.querySelector('meta[property="og:description"]');
+            if (descMeta) descMeta.content = enDesc.content;
+            if (ogDesc) ogDesc.content = enDesc.content;
+          }
         }
       })();
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta name="title-en" content={titleEn} />
     <meta name="description" content={description} />
+    <meta name="description-en" content={descriptionEn} />
     {canonical && <link rel="canonical" href={canonical} />}
 
     <meta property="og:title" content={title} />
@@ -82,6 +120,12 @@ const {
     --color-nav: 2 6 23;
     --color-nav-border: 15 23 42;
     --color-grid-line: 51 65 85;
+  }
+
+  /* i18n: hide inactive language */
+  html:not([lang="en"]) [data-lang="en"],
+  html[lang="en"] [data-lang="pl"] {
+    display: none !important;
   }
 
   * {
