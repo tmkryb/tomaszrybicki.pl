@@ -66,6 +66,15 @@ Dark mode with three options: **light**, **dark**, **auto** (follows system pref
 - CSS custom properties in `tailwind.config.mjs` define light/dark color variants (RGB format for opacity support)
 - Theme toggle in `Nav.astro`
 
+### Cookie Consent (GDPR/RODO)
+
+Uses [vanilla-cookieconsent v3](https://github.com/orestbida/cookieconsent) (Orest Bida), loaded via CDN in `Layout.astro`:
+
+- **Categories:** `necessary` (always on, read-only) and `analytics` (opt-in, auto-clears `_ga`/`_gid` cookies on revoke)
+- **Language:** automatically follows `<html lang>` — Polish and English translations included
+- **Blocking:** to add a script that requires consent, use `type="text/plain" data-cookiecategory="analytics"` on the `<script>` tag
+- Currently no analytics scripts are present; the analytics category is ready for future use
+
 ### Deployment
 
 GitHub Actions workflow (`.github/workflows/deploy.yml`) deploys on push to `main`:

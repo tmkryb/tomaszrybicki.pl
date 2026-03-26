@@ -79,9 +79,98 @@ const {
       rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css" />
   </head>
   <body class="bg-bg text-ink font-sans antialiased">
     <slot />
+    <script is:inline type="module">
+      import * as CookieConsent from 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.esm.js';
+
+      CookieConsent.run({
+        guiOptions: {
+          consentModal: { layout: 'box inline', position: 'bottom left' },
+          preferencesModal: { layout: 'box' },
+        },
+
+        categories: {
+          necessary: {
+            enabled: true,
+            readOnly: true,
+          },
+          analytics: {
+            autoClear: {
+              cookies: [{ name: /^(_ga|_gid)/ }],
+            },
+          },
+        },
+
+        language: {
+          default: document.documentElement.lang || 'pl',
+          translations: {
+            pl: {
+              consentModal: {
+                title: 'Szanujemy Twoj\u0105 prywatno\u015b\u0107',
+                description:
+                  'Ta strona u\u017cywa plik\u00f3w cookie, aby zapewni\u0107 prawid\u0142owe dzia\u0142anie witryny. Opcjonalnie mo\u017cesz wyrazi\u0107 zgod\u0119 na analityczne pliki cookie, kt\u00f3re pomagaj\u0105 nam ulepszy\u0107 stron\u0119.',
+                acceptAllBtn: 'Zaakceptuj wszystkie',
+                acceptNecessaryBtn: 'Tylko niezb\u0119dne',
+                showPreferencesBtn: 'Ustawienia',
+              },
+              preferencesModal: {
+                title: 'Ustawienia plik\u00f3w cookie',
+                acceptAllBtn: 'Zaakceptuj wszystkie',
+                acceptNecessaryBtn: 'Tylko niezb\u0119dne',
+                savePreferencesBtn: 'Zapisz ustawienia',
+                sections: [
+                  {
+                    title: 'Niezb\u0119dne pliki cookie',
+                    description:
+                      'Te pliki cookie s\u0105 wymagane do prawid\u0142owego dzia\u0142ania strony i nie mog\u0105 zosta\u0107 wy\u0142\u0105czone.',
+                    linkedCategory: 'necessary',
+                  },
+                  {
+                    title: 'Analityczne pliki cookie',
+                    description:
+                      'Pomagaj\u0105 nam zrozumie\u0107, w jaki spos\u00f3b odwiedzaj\u0105cy korzystaj\u0105 z naszej strony.',
+                    linkedCategory: 'analytics',
+                  },
+                ],
+              },
+            },
+            en: {
+              consentModal: {
+                title: 'We respect your privacy',
+                description:
+                  'This site uses cookies to ensure the website functions properly. You may optionally consent to analytics cookies that help us improve the site.',
+                acceptAllBtn: 'Accept all',
+                acceptNecessaryBtn: 'Necessary only',
+                showPreferencesBtn: 'Preferences',
+              },
+              preferencesModal: {
+                title: 'Cookie preferences',
+                acceptAllBtn: 'Accept all',
+                acceptNecessaryBtn: 'Necessary only',
+                savePreferencesBtn: 'Save preferences',
+                sections: [
+                  {
+                    title: 'Necessary cookies',
+                    description:
+                      'These cookies are required for the website to function properly and cannot be disabled.',
+                    linkedCategory: 'necessary',
+                  },
+                  {
+                    title: 'Analytics cookies',
+                    description:
+                      'Help us understand how visitors interact with our website.',
+                    linkedCategory: 'analytics',
+                  },
+                ],
+              },
+            },
+          },
+        },
+      });
+    </script>
   </body>
 </html>
 
