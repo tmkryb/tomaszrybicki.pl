@@ -18,7 +18,7 @@ npm run preview   # Preview production build locally
 
 - `src/pages/index.astro` — Homepage, composed of sequential section components from `src/components/`
 - `src/pages/artykuly/` — Article listing (`index.astro`) and detail pages (`[...slug].astro`)
-- `src/pages/case-studies/[...slug].astro` — Case study detail pages
+- `src/pages/case-studies/[...slug].astro` — Case study detail pages (no listing page — only individual detail routes)
 
 ### Content Collections
 
@@ -29,6 +29,8 @@ Markdown files with YAML frontmatter, defined in `src/content/config.ts`:
 
 Set `draft: true` in frontmatter to exclude content from listings.
 
+**Note:** Both content directories are currently empty. Components render fallback/placeholder content when no markdown files are present.
+
 ### Styling
 
 - Custom design tokens defined in `tailwind.config.mjs` — use these semantic names rather than raw hex values:
@@ -36,15 +38,46 @@ Set `draft: true` in frontmatter to exclude content from listings.
   - **Accent:** `accent-DEFAULT`, `accent-light`, `accent-dark`
   - **Text (ink):** `ink-DEFAULT` (class: `text-ink`), `ink-muted`, `ink-subtle`
   - **Nav:** `nav-DEFAULT`, `nav-border`
+  - **Borders:** `border-DEFAULT`, `border-light`
 - Global CSS classes defined in `src/layouts/Layout.astro`: `.grid-bg`, `.section-label`, `.card`, `.prose-content`
 
 ### Layout
 
-`src/layouts/Layout.astro` is the base HTML template. It accepts `title`, `description`, and `canonicalURL` props and handles SEO meta tags (Open Graph, Twitter card).
+`src/layouts/Layout.astro` is the base HTML template. It accepts `title`, `titleEn`, `description`, `descriptionEn`, and `canonical` props and handles SEO meta tags (Open Graph, Twitter card) with bilingual support.
+
+### Internationalization (i18n)
+
+The site is fully bilingual — **Polish** (default) and **English**:
+
+- All text elements use `data-lang="pl"` / `data-lang="en"` attributes for conditional display
+- Language toggle buttons in `Nav.astro`
+- Language detection priority: URL parameter (`?lang=pl` / `?lang=en`) → localStorage → default (Polish)
+- Language preference persisted in `localStorage` under key `lang`
+- Layout dynamically updates `<html lang>`, `<title>`, and meta description based on active language
+
+When adding new UI text, always provide both `data-lang="pl"` and `data-lang="en"` variants.
+
+### Theme System
+
+Dark mode with three options: **light**, **dark**, **auto** (follows system preference):
+
+- Class-based: toggles `.dark` on `<html>` element
+- Theme preference persisted in `localStorage` under key `theme`
+- CSS custom properties in `tailwind.config.mjs` define light/dark color variants (RGB format for opacity support)
+- Theme toggle in `Nav.astro`
+
+### Deployment
+
+GitHub Actions workflow (`.github/workflows/deploy.yml`) deploys on push to `main`:
+
+- Builds with Node 20
+- Deploys via SFTP (FTP-Deploy-Action) to LH.pl hosting
+- Destination: `/public_html/tomaszrybicki.pl/`
+- Credentials stored in GitHub secrets: `FTP_HOST`, `FTP_USER`, `FTP_PASSWORD`
 
 ## Key Notes
 
-- All UI copy and content is in **Polish**
-- Contact form requires an external endpoint (Formspree recommended) — not yet configured
-- Site URL in `astro.config.mjs` is a placeholder (`https://twojadomena.pl`) and needs to be updated
+- Default language is **Polish**, with full **English** translation available via language switcher
+- Contact form is configured with Formspree (`https://formspree.io/f/meerkqjo`); direct contact via `tmkryb@gmail.com` and LinkedIn
+- Site URL: `https://tomaszrybicki.pl` (configured in `astro.config.mjs`)
 - Fonts: Inter (sans) and JetBrains Mono (mono), loaded from Google Fonts
